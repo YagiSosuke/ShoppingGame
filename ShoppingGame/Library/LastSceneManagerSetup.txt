@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Yagi/Scenes/TestYagi.unity
+- path: Assets/Yagi/Scenes/CreateListScene.unity
   isLoaded: 1
   isActive: 1
