@@ -28,15 +28,23 @@ public class List_Instanceate : MonoBehaviour
             Debug.Log(s.Name);
             if (One == true)
             {
-                myList.Add(List);
+                
                 Instantiate(List, new Vector3(Containers.transform.position.x, Containers.transform.position.y - (myList.Count) * 200, Containers.transform.position.z), Quaternion.identity, Containers.transform);
                 List_Child = List.transform.GetChild(0).gameObject;
                 Listnametext = List_Child.GetComponent<TextMeshProUGUI>();
                 Debug.Log(List.transform.GetChild(0).gameObject);
                 Listnametext.text = s.Name;
+                myList.Add(List_Child);
+                Debug.Log("今startで処理したところ"+List.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text);
             }
             One = true;
             
+        }
+
+        foreach(var o in myList)
+        {
+            Debug.Log("myListに格納されているものの確認1" + myList[3].gameObject.GetComponent<TextMeshProUGUI>().text);
+            //Debug.Log("myListに格納されているものの確認2"+o.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text);
         }
     }
 
