@@ -1777,7 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID_text: {fileID: 1193593054}
-  IDResetF: 0
+  IDResetF: 1
 --- !u!1 &1481457855
 GameObject:
   m_ObjectHideFlags: 0

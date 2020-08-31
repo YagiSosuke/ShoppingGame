@@ -49,28 +49,7 @@ public class IDCreate : MonoBehaviour
 
 
 
-        //取得テスト
-        //UserIDsを検索するクラスを作成
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
-        //IDの値が930と一致するオブジェクトを検索
-        query.WhereEqualTo("ID", "930");
-        query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
-        {
-            if(e != null)
-            {
-                //検索失敗時
-                Debug.Log("エラーです");
-            }
-            else
-            {
-                //検索成功時
-                foreach (NCMBObject obj in objList)
-                {
-                    Debug.Log("このデータは存在します");
-                    Debug.Log("objectId:" + obj.ObjectId);
-                }
-            }
-        });
+        
     }
 
     // Update is called once per frame
@@ -82,18 +61,56 @@ public class IDCreate : MonoBehaviour
     //IDを作成する関数
     void CreateID()
     {
-        ID_int = (int)Random.Range(0, 999);       //0～999の乱数を生成し、IDにする
-        //IDをstring型に直す
-        if (ID_int < 100)
+        bool IDCreateF = false;     //IDが被っているかどうかのフラグ
+
+        do
         {
-            ID_str += "0";
-            if (ID_int < 10)
+            Debug.Log("実行されました");
+            ID_int = (int)Random.Range(0, 10);       //0～999の乱数を生成し、IDにする
+                                                     //IDをstring型に直す
+            if (ID_int < 100)
             {
                 ID_str += "0";
+                if (ID_int < 10)
+                {
+                    ID_str += "0";
+                }
             }
-        }
-        ID_str += ID_int.ToString();
-        
+            ID_str += ID_int.ToString();
+
+            IDCreateF = false;
+            Debug.Log("ここまでできた");
+            //取得テスト
+            //UserIDsを検索するクラスを作成
+            NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
+            Debug.Log("ここまでできた2");
+            //IDの値がID_strと一致するオブジェクトを検索
+            query.WhereEqualTo("ID", ID_str);
+            Debug.Log("ここまでできた3");
+            query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
+            {
+                Debug.Log("ここまでできた4");
+                if (e != null)
+                {
+                    //検索失敗時
+                    Debug.Log("エラーです");
+                }
+                else
+                {
+                    //検索成功時
+                    foreach (NCMBObject obj in objList)
+                    {
+                        Debug.Log("このデータは存在します");
+                        IDCreateF = true;
+                        Debug.Log("IDF = " + IDCreateF);
+                    }
+                }
+            });
+
+            Debug.Log("IDF2 = " + IDCreateF);
+        } while (IDCreateF);
+
+
         //クラスを作成
         NCMBObject objClass = new NCMBObject("UserIDs");
         // オブジェクトに値を設定
@@ -101,8 +118,5 @@ public class IDCreate : MonoBehaviour
         objClass["Name"] = "name";
         // データストアへの登録
         objClass.SaveAsync();
-
-
-        
     }
 }
