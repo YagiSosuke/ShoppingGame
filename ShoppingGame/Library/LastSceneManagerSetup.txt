@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Yagi/Scenes/OrderScene.unity
+- path: Assets/Yagi/Scenes/IDRegisterScene.unity
   isLoaded: 1
   isActive: 1
