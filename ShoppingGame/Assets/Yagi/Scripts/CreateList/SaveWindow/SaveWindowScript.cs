@@ -16,10 +16,13 @@ public class SaveWindowScript : MonoBehaviour
     [SerializeField] GameObject SavePanel;     //保存時に表示するウィンドウ
     [SerializeField] InputField ListNameInput;      //リスト名を入力する領域
 
+    string nameFilePath;        //ファイル名を保存するときのファイルパス
+
     // Start is called before the first frame update
     void Start()
     {
         filePath = Application.dataPath + @"\List\";
+        nameFilePath = Application.dataPath + @"\List\_ListName.txt";
     }
 
     // Update is called once per frame
@@ -46,6 +49,10 @@ public class SaveWindowScript : MonoBehaviour
 
         //textファイルにリスト内容を渡す
         File.AppendAllText(filePath+fileName+".txt", myString);
+
+        //ファイル名を保存
+        File.AppendAllText(nameFilePath, fileName+"\n");
+
 
         SavePanel.SetActive(false);
         SceneManager.LoadScene("CreateListScene");          //戻った画面を表示する
