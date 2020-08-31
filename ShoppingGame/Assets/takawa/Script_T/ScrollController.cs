@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+//指定したプレハブを作る（バグありで、これは考えなくてもいい、使わない）
+
 public class ScrollController : MonoBehaviour
 {
 
