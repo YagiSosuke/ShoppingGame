@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using NCMB;
 
 /*初回起動時、IDを自動生成してくれるスクリプト*/
+/*タイトル画面につけたい*/
 
 public class IDCreate : MonoBehaviour
 {
