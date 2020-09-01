@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using NCMB;
+using System.IO;
 
 /*IDを検索するスクリプト*/
 
@@ -10,12 +11,18 @@ public class SerchID : MonoBehaviour
 {
     [SerializeField] InputField FamilyID;       //検索したいIDを入力するInputField
     [SerializeField] GameObject SerchCheckPanel;//検索結果確認のパネル
+    [SerializeField] GameObject UncorrectPanel; //検索失敗のパネル
+    [SerializeField] Text UncorrectText;        //検索失敗テキスト
+
     [SerializeField] Text FamilyNameText;       //家族の名前を表示するテキスト     
+    [SerializeField] Text FamilyNameText2;       //家族の名前を表示するテキスト(登録完了パネル用)     
+
+    string FilePath;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        FilePath = Application.dataPath + @"\Family\FamilyData.txt";
     }
 
     // Update is called once per frame
@@ -43,12 +50,47 @@ public class SerchID : MonoBehaviour
                 //アカウントが存在した場合
                 if(count > 0)
                 {
-                    GetAccount();
+                    //登録されている家族のIDを読み込む
+                    string[] FileText = File.ReadAllLines(FilePath);
+                    //IDが既に登録されているかを見るフラグ
+                    bool IDRegisterYet = false;
+
+                    //IDがすでに登録されているか検索
+                    for(int i=0;i<FileText.Length; i++)
+                    {
+                        Debug.Log("ファイル["+i+"] = "+FileText[i]);
+                        if (FileText[i] == FamilyID.text) {
+                            IDRegisterYet = true;
+                            break;
+                        }
+                    }
+
+
+                    //自分のIDが入力されたときの処理
+                    if (FamilyID.text == PlayerPrefs.GetString("IDCreateYet", "null"))
+                    {
+                        UncorrectPanel.SetActive(true);
+                        UncorrectText.text = "自分のIDを\n登録することはできません";
+                    }
+
+                    //IDが既に登録されている場合の処理
+                    else if (IDRegisterYet)
+                    {
+                        UncorrectPanel.SetActive(true);
+                        UncorrectText.text = "入力されたIDは\n既に登録されています";
+                    }
+
+                    else {
+                        //指定されたIDのアカウントを取得
+                        GetAccount();
+                    }
                 }
                 //アカウントが存在しない場合
                 else
                 {
-                    Debug.Log("アカウントが存在しません");
+                    //エラーパネルを表示
+                    UncorrectPanel.SetActive(true);
+                    UncorrectText.text = "入力されたIDは存在しません\nもう一度お試しください";
                 }
             }
         });
@@ -76,6 +118,7 @@ public class SerchID : MonoBehaviour
                 {
                     SerchCheckPanel.SetActive(true);
                     FamilyNameText.text = (string)obj["Name"];
+                    FamilyNameText2.text = (string)obj["Name"];
                     break;
                 }
             }
