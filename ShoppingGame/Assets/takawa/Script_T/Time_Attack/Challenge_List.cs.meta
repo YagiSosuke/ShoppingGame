@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7c91ca3f30ae00140b7ab24066a82c70
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - selection_List_Move_Scene: {fileID: 3678675935853340266, guid: 13fae25541ef00a4ca97dfa9684feccd,
+      type: 3}
+  - List: {instanceID: 0}
+  - Containers: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
