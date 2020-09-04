@@ -9,7 +9,7 @@ using NCMB;
 
 public class OrderCorrect : MonoBehaviour
 {
-    [SerializeField] InputField OrderInput;     //依頼先を入力するUI
+    [SerializeField] Dropdown OrderInput;     //依頼先を入力するUI
     string OrderName;       //依頼先
 
     [SerializeField] GameObject SendPanel;     //保存時に表示するウィンドウ
@@ -17,6 +17,8 @@ public class OrderCorrect : MonoBehaviour
     [SerializeField] GameObject CorrectPanel;     //保存時に表示するウィンドウ
 
     [SerializeField] ListName ListScript;     //リストを管理するスクリプト
+
+    [SerializeField] Dropdown dropdown;         //ドロップダウンメニュー
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,7 @@ public class OrderCorrect : MonoBehaviour
     public void OKButton()
     {
         SendPanel.SetActive(true);
-        SendPanelText.text = "以上の内容を\n" + OrderInput.text +"\nに送信します";
+        SendPanelText.text = "以上の内容を\n" + OrderName +"\nに送信します";
     }
 
     //送信確認画面を見えなくするボタン
@@ -45,25 +47,49 @@ public class OrderCorrect : MonoBehaviour
     //依頼を送信するボタン
     public void SendButton()
     {
-        OrderName = OrderInput.text;        //依頼先を取得
+        //依頼先を名前 -> IDに変える必要がある
+        //Nameが指定されたもののIDを検索する
 
-        //リストの回数繰り返す
-        for (int i = 0; i < ListScript.ListLen; i++)
-        {
-            //リストを取得
-            string List = ListScript.ListContainerEntity[i].transform.GetChild(1).GetComponent<InputField>().text;
+        //UserIDsを検索するクラスを作成
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
+        //Scoreの値が7と一致するオブジェクト検索
+        query.WhereEqualTo("Name", OrderName);
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e != null)
+            {
+                //検索失敗時の処理
+                Debug.Log("検索に失敗しました");
+            }
+            else {
+                //サーバに書き込み
+                foreach (NCMBObject obj in objList)
+                {
+                    //リストの回数繰り返す
+                    for (int i = 0; i < ListScript.ListLen; i++)
+                    {
+                        //リストを取得
+                        string List = ListScript.ListContainerEntity[i].transform.GetChild(1).GetComponent<InputField>().text;
 
-            //サーバ - データストアに値をアップロード
-            NCMBObject OrderClass = new NCMBObject(OrderName);      //サーバ - 依頼先のクラスを作成
-            OrderClass["message"] = List;                           //値を設定
-            OrderClass.SaveAsync();             // データストアへの登録
-        }
-        CorrectPanel.SetActive(true);
+                        //サーバ - データストアに値をアップロード
+                        NCMBObject OrderClass = new NCMBObject("_" + (string)obj["ID"]);      //サーバ - 依頼先のクラスを作成
+                        OrderClass["message"] = List;       //値を設定
+                        OrderClass.SaveAsync();             // データストアへの登録
+                    }
+                    CorrectPanel.SetActive(true);
+                }
+            }
+        });        
     }
 
     //依頼を完了するボタン
     public void CorrectButton()
     {
         SceneManager.LoadScene("OrderScene");
+    }
+
+    //ドロップダウンメニューのテキストを取得するスクリプト
+    public void GetValue(int value)
+    {
+        OrderName = dropdown.options[value].text;
     }
 }
