@@ -606,8 +606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7daf94cc16af0c441b7b43e4bf571fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  List_detail: {fileID: 5858159513628860569, guid: 2231f8df703bc8d428a0093c74cfc143,
-    type: 3}
 --- !u!1 &8741166968119089446
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +683,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8741166966645320434}
   toggleTransition: 1
   graphic: {fileID: 8741166966368513902}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 114991992709521022, guid: 52c992ba4b0b3474f98d0a13b2054dde, type: 3}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []

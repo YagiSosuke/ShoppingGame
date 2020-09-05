@@ -4,15 +4,10 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 
-//Selection_Listでボタンを押したらリストの詳細を表示させる（未完成）
+//Selection_Listでリストのボタンを押したらリストの詳細を表示させる
 public class List_details : MonoBehaviour
 {
-    string FilePath;//開きたいファイルまでのファイルパス
-    string FileName;
-    GameObject List_Child;//Listの子オブジェクト
-    [SerializeField] private GameObject List_detail;//作成しておいたリスト
-    TextMeshProUGUI Listnametext;//List_Childのテキスト
-
+    private bool details_button = false;//リスト詳細が表示されているかいないか
     // Start is called before the first frame update
     void Start()
     {
@@ -25,32 +20,41 @@ public class List_details : MonoBehaviour
 
     }
 
+    //Selection_Listでリストのボタンを押したらリストの詳細を表示させる
     public void details()
     {
-        FileName = this.GetComponent<TextMeshProUGUI>().text;
-        FilePath = Application.dataPath + @"\List\" + FileName + ".txt";
-
-        string[] allText1 = File.ReadAllLines(FilePath);//指定したファイルを一行ずつ読み込む
-
-        foreach (var s in allText1)//リストを一つずつ出現させ、テキストから読み取った内容を書き込ませる
+        if (details_button == false)//詳細が表示されていなかったら表示させる
         {
-            Debug.Log("一つのリスト名を表示" + s);
-
-            //リストを一つ作る
-
-            Instantiate(List_detail, new Vector3(0, 0, 0), Quaternion.identity, this.transform);//Containers.transform.position.y//- (myList.Count) * 200
-            
-            List_detail.transform.parent = GameObject.Find("コンテンツ").transform;
-            List_detail.transform.SetSiblingIndex(1);
-
-            //リストの子にあるテキストを取得する
-            List_Child = List_detail.transform.GetChild(0).gameObject;
-            Listnametext = List_Child.GetComponent<TextMeshProUGUI>();
-            Debug.Log(List_detail.transform.GetChild(0).gameObject);
-
-            //読み込んだファイルの一行を今作ったリストの名前にする
-            Listnametext.text = s;
-
+            //foreachでコンテンツの子オブジェクトを全て取得し、
+            foreach (Transform Container_Child in List_Instanceate.Container.transform)
+            {
+                Debug.Log(this.transform.parent.gameObject.name);
+                //if文で詳細の名前についてある番号から該当するものを全て取得する
+                if (Container_Child.gameObject.name == this.transform.parent.gameObject.name + "details(Clone)")
+                {
+                    //その取得したもののsetActiveを全てtrueにする
+                    Container_Child.gameObject.SetActive(true);
+                }
+            }
+            details_button = true;//全部表示された
         }
+        else//詳細が表示されていたら消す
+        {
+            //foreachでコンテンツの子オブジェクトを全て取得し、
+            foreach (Transform Container_Child in List_Instanceate.Container.transform)
+            {
+                Debug.Log(this.transform.parent.gameObject.name);
+                //if文で詳細の名前についてある番号から該当するものを全て取得する
+                if (Container_Child.gameObject.name == this.transform.parent.gameObject.name + "details(Clone)")
+                {
+                    //その取得したもののsetActiveを全てfalseにする
+                    Container_Child.gameObject.SetActive(false);
+                }
+            }
+            details_button = false;//全部消した
+        }
+        
+        
+        
     }
 }
