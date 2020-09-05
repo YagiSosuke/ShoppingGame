@@ -18,6 +18,8 @@ public class ProductContainerScript : MonoBehaviour
 
     GameObject AddButton;       //追加ボタン
 
+    [SerializeField] InputField input;          //リスト内容の入力領域
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +60,15 @@ public class ProductContainerScript : MonoBehaviour
         AreaRect.sizeDelta = new Vector2(AreaRect.sizeDelta.x, AreaRect.sizeDelta.y - 200);
         //追加ボタンの位置を上げる
         AddButton.transform.localPosition = new Vector3(0, -AreaRect.sizeDelta.y / 2 + 100, 0);
+    }
+
+    //空白が入力されたとき
+    //リストの中身をもう一度空にする
+    public void SpaceDelete()
+    {
+        if(input.text == " " || input.text == "　")
+        {
+            input.text = "";
+        }
     }
 }
