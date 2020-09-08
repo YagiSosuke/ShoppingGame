@@ -68,7 +68,7 @@ public class confirmationButton_Ctrl : MonoBehaviour
             Debug.Log("次のシーンへ");
             Timer_Ctrl.count_up = false;
             confirmation_obj.SetActive(false);
-            //SceneManager.LoadScene("Result");
+            SceneManager.LoadScene("Result");
         }
         else//全て押してなかったらウィンドウが閉じるだけ（ここに注意書きが流れるようにしたい）
         {
