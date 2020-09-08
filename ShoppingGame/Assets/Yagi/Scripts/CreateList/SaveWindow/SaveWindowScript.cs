@@ -13,6 +13,7 @@ public class SaveWindowScript : MonoBehaviour
     string fileName;        //ファイル名
     [SerializeField] ListName list;     //リストを管理するスクリプト
     [SerializeField] GameObject SavePanel;     //保存時に表示するウィンドウ
+    [SerializeField] GameObject SaveCorrectPanel;     //保存完了時に表示するウィンドウ
     [SerializeField] InputField ListNameInput;      //リスト名を入力する領域
 
     
@@ -60,9 +61,8 @@ public class SaveWindowScript : MonoBehaviour
         //ファイル名を保存
         File.AppendAllText(nameFilePath, fileName+"\n");
 
-
-        SavePanel.SetActive(false);
-        SceneManager.LoadScene("CreateListScene");          //戻った画面を表示する
+        SaveCorrectPanel.SetActive(true);       //保存完了パネルを開く
+        SavePanel.SetActive(false);             //保存確認パネルを閉じる
     }
 
     //ウィンドウを閉じる
