@@ -25,15 +25,15 @@ public class titleButtonScript : MonoBehaviour
         switch (sceneButton)
         {
             case SceneButton.Start:
-                //SceneManager.LoadScene("");
+                SceneManager.LoadScene("Selection_List");
                 Debug.Log("ショッピングボタンが押されました");
                 break;
             case SceneButton.CreateList:
-                //SceneManager.LoadScene("");
+                SceneManager.LoadScene("CreateListScene");
                 Debug.Log("リスト作成ボタンが押されました");
                 break;
             case SceneButton.Order:
-                //SceneManager.LoadScene("");
+                SceneManager.LoadScene("OrderScene");
                 Debug.Log("依頼ボタンが押されました");
                 break;
             case SceneButton.Rank:
@@ -41,7 +41,7 @@ public class titleButtonScript : MonoBehaviour
                 Debug.Log("ランキングボタンが押されました");
                 break;
             case SceneButton.IDRegister:
-                //SceneManager.LoadScene("");
+                SceneManager.LoadScene("IDRegisterScene");
                 Debug.Log("ID登録ボタンが押されました");
                 break;
             default:

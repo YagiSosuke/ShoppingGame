@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Chiba/Title.unity
-=======
-- path: Assets/takawa/Scene_T/Time_Attack.unity
->>>>>>> 7f4619472745c1a37c03d990bed3518ff8baf668
   isLoaded: 1
   isActive: 1
