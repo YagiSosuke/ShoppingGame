@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Yagi/Scenes/CreateListScene.unity
     guid: 4f1d2f042b29704438a3d785462db783
   - enabled: 1
+<<<<<<< HEAD
+=======
+    path: Assets/Yagi/Scenes/IDRegisterScene.unity
+    guid: 7e473ffef118efd45af5564a6c57f527
+  - enabled: 1
+    path: Assets/Yagi/Scenes/IDListScene.unity
+    guid: e7ce7817ce4c61a48983605f7cfc8490
+  - enabled: 1
+    path: Assets/Yagi/Scenes/OrderScene.unity
+    guid: fcbed1879359d534e9c2cae0578e5ace
+  - enabled: 1
+>>>>>>> 八木
     path: Assets/takawa/Scene_T/Selection_List.unity
     guid: 6a2ffe83d488a2040a44ea64e13e3152
   - enabled: 1
