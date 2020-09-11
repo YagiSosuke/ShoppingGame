@@ -10,6 +10,9 @@ public class SaveButton : MonoBehaviour
     [SerializeField] Button button;         //保存ボタン
     [SerializeField] InputField input;      //入力領域
 
+    [SerializeField] GameObject SavePanel;      //保存パネル
+    [SerializeField] GameObject SaveCorrectPanel;      //保存完了パネル
+
     // Start is called before the first frame update
     void Start()
     {
