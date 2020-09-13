@@ -3,9 +3,9 @@ PlayerPath?
 C:/Users/1823122/Desktop/クイックショッピング/ShoppingGame.apk
 SceneListBegin?
 Assets/Chiba/Title.unity
-Assets/takawa/Scene_T/Time_Attack.unity
-Assets/takawa/Scene_T/Selection_List.unity
 Assets/takawa/Scene_T/Result.unity
+Assets/takawa/Scene_T/Selection_List.unity
+Assets/takawa/Scene_T/Time_Attack.unity
 Assets/Yagi/Scenes/CreateListScene.unity
 Assets/Yagi/Scenes/IDListScene.unity
 Assets/Yagi/Scenes/IDRegisterScene.unity
@@ -133,7 +133,6 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 d59d712041c1ad934122f50281cc8409 Assembly-CSharp.dll:.LoadFamilyList
-f7202b52ab9e6db0412933109baff7db Assembly-CSharp.dll:.Result_Time
 ed2546da53d6f69f4f55a78f078d41c6 Assembly-CSharp.dll:.ScrollController
 433a4206240afda8ccdad16e35f88881 Assembly-CSharp.dll:.OrderDropDownMenu
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
@@ -143,11 +142,9 @@ ce477fe6829e4aa1c3da13d2cb6e8548 Assembly-CSharp.dll:.CorrectPanelScript
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.BackSceneScript
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:NCMB.NCMBManager
-94f1638bd17e091c974bc21053aebf1a Assembly-CSharp.dll:.Mode_End_Time
 28f634d9e7ee7f67a3756d34df00d8ad Assembly-CSharp.dll:.SerchCheckPanelScript
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 e93a8ca81b590c18f3ee9200f9deb51a Assembly-CSharp.dll:.SerchID
-2d8a248fbbc4f0c8804cc0964965ec61 Assembly-CSharp.dll:.titleButtonScript
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -183,7 +180,6 @@ dfd700532cb3520f5e02d197c952d3bb Assembly-CSharp.dll:.List_Instanceate
 fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
-46045485872589dd5f353153b8ee85ff Assembly-CSharp.dll:.clockController
 395980190b6d9cc8396ea6675dd32058 Assembly-CSharp.dll:.SaveWindowScript
 3b760e6526e13f7504f59e210145899a Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 507174d46dacbc5fe45e28485db5dd1e Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
@@ -199,3 +195,7 @@ d198ea509a2fb51aac17b1de91a1eb0d Assembly-CSharp.dll:.ProductContainerScript
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 b122d24127ec14e3d41f7c06183cbc11 Assembly-CSharp.dll:.OrderCorrect
 17e46684f7a27512e1cd61b1e3e45d88 Assembly-CSharp.dll:.Challenge_List
+f7202b52ab9e6db0412933109baff7db Assembly-CSharp.dll:.Result_Time
+94f1638bd17e091c974bc21053aebf1a Assembly-CSharp.dll:.Mode_End_Time
+2d8a248fbbc4f0c8804cc0964965ec61 Assembly-CSharp.dll:.titleButtonScript
+46045485872589dd5f353153b8ee85ff Assembly-CSharp.dll:.clockController
