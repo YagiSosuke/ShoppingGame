@@ -22,7 +22,11 @@ public class SerchID : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FilePath = Application.dataPath + @"\Family\FamilyData.txt";
+        #if UNITY_EDITOR        //デバッグ時
+            FilePath = Application.dataPath + @"\Family\FamilyData.txt";
+        #elif UNITY_STANDALONE  //リリース時
+            FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
+        #endif
     }
 
     // Update is called once per frame

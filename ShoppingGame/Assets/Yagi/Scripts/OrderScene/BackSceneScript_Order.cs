@@ -11,6 +11,6 @@ public class BackSceneScript_Order : MonoBehaviour
     //前のシーンに戻る
     public void BackScene()
     {
-        SceneManager.LoadScene("OrderScene");
+        SceneManager.LoadScene("Title");
     }
 }

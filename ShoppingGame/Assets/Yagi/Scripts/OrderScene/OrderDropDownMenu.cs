@@ -25,8 +25,14 @@ public class OrderDropDownMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FamilyFilePath = Application.dataPath + @"\Family\FamilyData.txt";
+        #if UNITY_EDITOR        //デバッグ時
+            FamilyFilePath = Application.dataPath + @"\Family\FamilyData.txt";
+        #elif UNITY_ANDROID     //リリース時
+            FamilyFilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
+        #endif
+
         FamilyID = File.ReadAllLines(FamilyFilePath);      //家族のIDを格納
+
         Cnt = 0;            //カウントの初期値を0にしておく
         FamilyNum = FamilyID.Length;            //家族の人数を記録
 

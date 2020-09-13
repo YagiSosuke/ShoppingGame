@@ -21,7 +21,11 @@ public class List_Instanceate : MonoBehaviour
     //テキストファイルの情報を全てリストに表示させ、myListにリストの名前を格納させる
     void Start()
     {
-        FilePath = Application.dataPath + @"\List\_ListName.txt";
+        #if UNITY_EDITOR        //デバッグ時
+            FilePath = Application.dataPath + @"\List\_ListName.txt";
+        #elif UNITY_ANDROID     //リリース時
+            FilePath = Application.persistentDataPath + @"\List\_ListName.txt";
+        #endif
 
         //DirectoryInfo dir = new DirectoryInfo(FilePath);//指定したフォルダーの中身を全て読み込む
         //FileInfo[] info = dir.GetFiles("*.txt");
@@ -67,7 +71,11 @@ public class List_Instanceate : MonoBehaviour
     //リストの詳細を生成する関数
     void detail_instance(string text)
     {
-        FilePath2 = Application.dataPath + @"\List\" + text + ".txt";
+        #if UNITY_EDITOR        //デバッグ時
+            FilePath2 = Application.dataPath + @"\List\" + text + ".txt";
+        #elif UNITY_ANDROID     //リリース時
+            FilePath2 = Application.persistentDataPath + @"\List\" + text + ".txt";
+        #endif
 
         string[] allText2 = File.ReadAllLines(FilePath2);//指定したファイルを一行ずつ読み込む
 

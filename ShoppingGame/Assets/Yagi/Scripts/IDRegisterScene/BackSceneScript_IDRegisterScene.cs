@@ -11,6 +11,6 @@ public class BackSceneScript_IDRegisterScene : MonoBehaviour
     //前のシーンに戻る
     public void BackScene()
     {
-        SceneManager.LoadScene("IDRegisterScene");
+        SceneManager.LoadScene("Title");
     }
 }
