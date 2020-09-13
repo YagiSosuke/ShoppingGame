@@ -21,12 +21,18 @@ public class SaveWindowScript : MonoBehaviour
     [SerializeField] Text ErrorText;            //エラーウィンドウに表示されるテキスト
 
     string nameFilePath;        //ファイル名を保存するときのファイルパス
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        filePath = Application.dataPath + @"\List\";
-        nameFilePath = Application.dataPath + @"\List\_ListName.txt";
+        #if UNITY_EDITOR        //デバッグ時
+            filePath = Application.dataPath + @"\List\";
+            nameFilePath = Application.dataPath + @"\List\_ListName.txt";
+        #elif UNITY_ANDROID  //リリース時
+            filePath = Application.persistentDataPath + @"\List\";
+            nameFilePath = Application.persistentDataPath + @"\List\_ListName.txt";
+        #endif
     }
 
     // Update is called once per frame
@@ -56,10 +62,9 @@ public class SaveWindowScript : MonoBehaviour
         }
 
         //textファイルにリスト内容を渡す
-        File.AppendAllText(filePath+fileName+".txt", myString);
-
+            File.AppendAllText(filePath+fileName+".txt", myString);
         //ファイル名を保存
-        File.AppendAllText(nameFilePath, fileName+"\n");
+            File.AppendAllText(nameFilePath, fileName+"\n");
 
         SaveCorrectPanel.SetActive(true);       //保存完了パネルを開く
         SavePanel.SetActive(false);             //保存確認パネルを閉じる

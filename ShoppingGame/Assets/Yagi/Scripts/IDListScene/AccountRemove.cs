@@ -22,7 +22,11 @@ public class AccountRemove : MonoBehaviour
     void Start()
     {
         ScrollArea = GameObject.Find("ScrollArea");
-        FilePath = Application.dataPath + @"\Family\FamilyData.txt";
+        #if UNITY_EDITOR        //デバッグ時
+            FilePath = Application.dataPath + @"\Family\FamilyData.txt";
+        #elif UNITY_ANDROID     //リリース時
+            FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
+        #endif
     }
 
     // Update is called once per frame
@@ -57,8 +61,9 @@ public class AccountRemove : MonoBehaviour
                 {
                     //IDを記録
                     UserID = (string)obj["ID"];
-
+                    
                     fileID = File.ReadAllText(FilePath).Replace(UserID, "").Replace("\n", "");
+
                     Debug.Log("fileID = " + fileID);
                     
                     int beginIndex = fileID.Length;     //文字列の開始インデックス
