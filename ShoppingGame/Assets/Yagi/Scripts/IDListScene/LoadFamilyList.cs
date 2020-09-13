@@ -25,10 +25,15 @@ public class LoadFamilyList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        filePath = Application.dataPath + @"\Family\FamilyData.txt";     //ファイルパス
+        #if UNITY_EDITOR
+            filePath = Application.dataPath + @"\Family\FamilyData.txt";     //ファイルパス
+        #elif UNITY_ANDROID
+            filePath = Application.persistentDataPath + @"\Family\FamilyData.txt";     //ファイルパス
+        #endif
         ScrollRT = ScrollArea.GetComponent(typeof(RectTransform)) as RectTransform;
 
-        string[] allText = File.ReadAllLines(filePath);         //登録アカウントデータ
+        
+            string[] allText = File.ReadAllLines(filePath);         //登録アカウントデータ
 
         foreach (var text in allText)
         {

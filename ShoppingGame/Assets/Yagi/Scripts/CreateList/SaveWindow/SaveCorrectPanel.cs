@@ -24,13 +24,13 @@ public class SaveCorrectPanel : MonoBehaviour
     public void YesButton()
     {
         //タイムアタック画面へ移動
-        SceneManager.LoadScene("Time_Attack");
+        SceneManager.LoadScene("Selection_List");
     }
 
     //いいえボタン
     public void NoButton()
     {
         //タイトル画面へ移動
-        SceneManager.LoadScene("CreateListScene");
+        SceneManager.LoadScene("Title");
     }
 }

@@ -1,8 +1,12 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/Yagi/Scenes/IDRegisterScene.unity
 =======
 - path: Assets/takawa/Scene_T/Time_Attack.unity
 >>>>>>> 7f4619472745c1a37c03d990bed3518ff8baf668
+=======
+- path: Assets/Yagi/Scenes/CreateListScene.unity
+>>>>>>> Layout1
   isLoaded: 1
   isActive: 1
