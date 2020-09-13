@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 8022525542289710978}
   - component: {fileID: 4196230659527896366}
   m_Layer: 5
-  m_Name: "\u30EA\u30B9\u30C8Toggle (1)"
+  m_Name: "\u8CB7\u3048\u306A\u304B\u3063\u305FToggle"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 449, y: 0}
+  m_AnchoredPosition: {x: -390, y: 0}
   m_SizeDelta: {x: 160, y: 78.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4196230659527896366
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -282.10248, y: -43.88269, z: -253.31873, w: -50.15149}
+  m_margin: {x: -363.85788, y: -43.88269, z: -117.83844, w: -50.15149}
   m_textInfo:
     textComponent: {fileID: 8741166967668332084}
     characterCount: 0
@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 8741166968119089445}
   - component: {fileID: 8741166968119089444}
   m_Layer: 5
-  m_Name: "\u30EA\u30B9\u30C8Toggle"
+  m_Name: "\u8CB7\u3048\u305FToggle"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,7 +671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -386, y: 0}
+  m_AnchoredPosition: {x: 448, y: 0}
   m_SizeDelta: {x: 160, y: 78.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8741166968119089444

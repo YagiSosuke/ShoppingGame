@@ -57,8 +57,12 @@ public class Selection_List_Move_Scene : MonoBehaviour
 
     }
 
-    public void BackScene()//タイトルに戻る
+    public void BackScene()//値をリセットしてタイトルに戻る
     {
+        Timer_Ctrl.count_up = true;
+        Timer_Ctrl.total_time = 0;
+        Timer_Ctrl.second = 0;
+        Timer_Ctrl.minute = 0;
         SceneManager.LoadScene("Title");
     }
 }
