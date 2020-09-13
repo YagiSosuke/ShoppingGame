@@ -17,7 +17,11 @@ public class Challenge_List : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FilePath = Application.dataPath + @"\List\" + Selection_List_Move_Scene.fileName + ".txt";
+        #if UNITY_EDITOR        //デバッグ時
+            FilePath = Application.dataPath + @"\List\" + Selection_List_Move_Scene.fileName + ".txt";
+        #elif UNITY_ANDROID     //リリース時
+            FilePath = Application.persistentDataPath + @"\List\" + Selection_List_Move_Scene.fileName + ".txt";
+        #endif
         Debug.Log("TimeAttackのfilepath:" + FilePath);
 
         string[] allText1 = File.ReadAllLines(FilePath);//指定したファイルを一行ずつ読み込む
