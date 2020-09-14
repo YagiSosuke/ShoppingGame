@@ -12,8 +12,7 @@ public class IDCreate : MonoBehaviour
     int ID_int;         //int型のID
     string ID_str = "";      //string型のID
 
-    [SerializeField]
-    Text ID_text;      //自分のIDヲ表示するテキスト
+    //[SerializeField] Text ID_text;      //自分のIDヲ表示するテキスト
 
     [SerializeField]
     bool IDResetF;
@@ -43,7 +42,7 @@ public class IDCreate : MonoBehaviour
             //IDが既に存在する場合、ID_strに渡しておく
             ID_str = PlayerPrefs.GetString("IDCreateYet", "null");
             //IDを表示する
-            ID_text.text = "ID:" + ID_str;
+            //ID_text.text = "ID:" + ID_str;
         }
 
 
@@ -95,7 +94,7 @@ public class IDCreate : MonoBehaviour
                 if (count == 0)
                 {
                     //IDを表示する
-                    ID_text.text = "ID:" + ID_str;
+                    //ID_text.text = "ID:" + ID_str;
 
 
                     //クラスを作成
