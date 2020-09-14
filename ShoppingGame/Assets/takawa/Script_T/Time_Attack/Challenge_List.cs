@@ -13,6 +13,7 @@ public class Challenge_List : MonoBehaviour
     GameObject List_Child;//Listの子オブジェクト
     TextMeshProUGUI Listnametext;//List_Childのテキスト
     public int List_num = 0;//Listの名前に番号を付けるのと、個数を数える
+    public static int count=0;//個数を記録する(リザルト画面の平均時間を求める時に使う)
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class Challenge_List : MonoBehaviour
 
         }
         Debug.Log("リストの数:"+List_num);
+        count = List_num;//平均時間計算用の変数に値をコピーする
     }
 
     // Update is called once per frame

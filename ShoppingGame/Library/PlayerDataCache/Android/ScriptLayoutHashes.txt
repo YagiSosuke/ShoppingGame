@@ -1,15 +1,15 @@
 Android
 PlayerPath?
-C:/Users/1823122/Desktop/クイックショッピング/ShoppingGame.apk
+C:/Users/1822052/Desktop/アンドロイド＿テスト/test05.apk
 SceneListBegin?
 Assets/Chiba/Title.unity
-Assets/takawa/Scene_T/Result.unity
-Assets/takawa/Scene_T/Selection_List.unity
-Assets/takawa/Scene_T/Time_Attack.unity
 Assets/Yagi/Scenes/CreateListScene.unity
 Assets/Yagi/Scenes/IDListScene.unity
 Assets/Yagi/Scenes/IDRegisterScene.unity
 Assets/Yagi/Scenes/OrderScene.unity
+Assets/takawa/Scene_T/Selection_List.unity
+Assets/takawa/Scene_T/Time_Attack.unity
+Assets/takawa/Scene_T/Result.unity
 SceneListEnd?
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 77c21079ace8d76ce6e941d3dabbfe6e Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
