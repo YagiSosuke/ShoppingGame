@@ -96,7 +96,7 @@ public class SaveWindowScript : MonoBehaviour
         if (list.ListLen > 0 && myString == "")
         {
             ErrorPanel.SetActive(true);
-            ErrorText.text = "依頼する商品を入力してください";
+            ErrorText.text = "依頼する商品を\n入力してください";
         }
         //リストの項目がある場合は保存できる
         else if (list.ListLen > 0)
