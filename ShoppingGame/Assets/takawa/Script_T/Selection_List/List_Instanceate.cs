@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using TMPro;
+using UnityEngine.UI;
 
 //テキストファイルの情報を全てリストに表示させ、myListにリストの名前を格納させる
 
@@ -13,7 +14,7 @@ public class List_Instanceate : MonoBehaviour
     [SerializeField] private GameObject List;//作成しておいたリスト
     [SerializeField] GameObject Containers; //コンテンツを入れて置くゲームオブジェクト
     GameObject List_Child;//Listの子オブジェクト
-    TextMeshProUGUI Listnametext;//List_Childのテキスト
+    Text Listnametext;//List_Childのテキスト
     public int List_num = 0;//Listの名前に番号を付けるのと、個数を数える
     public static GameObject Container;//コンテンツを入れて置くゲームオブジェクト(staticバージョン)
     [SerializeField] private GameObject List_detail;//作成しておいたリスト
@@ -42,7 +43,7 @@ public class List_Instanceate : MonoBehaviour
 
             //リストの子にあるテキストを取得する
             List_Child = List.transform.GetChild(0).gameObject;
-            Listnametext = List_Child.GetComponent<TextMeshProUGUI>();
+            Listnametext = List_Child.GetComponent<Text>();
             //Debug.Log(List.transform.GetChild(0).gameObject);
 
             //読み込んだファイルの一行を今作ったリストの名前にする
@@ -86,7 +87,7 @@ public class List_Instanceate : MonoBehaviour
 
             //リストの詳細の子にあるテキストを取得する
             List_Child = List_detail.transform.GetChild(0).gameObject;
-            Listnametext = List_Child.GetComponent<TextMeshProUGUI>();
+            Listnametext = List_Child.GetComponent<Text>();
             //Debug.Log(List_detail.transform.GetChild(0).gameObject);
 
             //読み込んだファイルの一行を今作ったリストの詳細の名前にする

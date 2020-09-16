@@ -39,8 +39,8 @@ public class Selection_List_Move_Scene : MonoBehaviour
             ListToggle = myList_Child.GetComponent<Toggle>();
             if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
             {
-                Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text);
-                fileName = myList_parent.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text;
+                Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+                fileName = myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text;
                 true_count++;
                 Debug.Log("fileName:" + fileName);
             }
