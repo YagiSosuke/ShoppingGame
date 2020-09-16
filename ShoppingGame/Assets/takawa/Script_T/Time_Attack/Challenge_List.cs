@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using TMPro;
+using UnityEngine.UI;
 
 //Time_Attackシーンで選択したリストの詳細を表示させる
 public class Challenge_List : MonoBehaviour
@@ -11,7 +12,7 @@ public class Challenge_List : MonoBehaviour
     [SerializeField] private GameObject List;//作成しておいたリスト
     [SerializeField] GameObject Containers; //コンテンツを入れて置くゲームオブジェクト
     GameObject List_Child;//Listの子オブジェクト
-    TextMeshProUGUI Listnametext;//List_Childのテキスト
+    Text Listnametext;//List_Childのテキスト
     public int List_num = 0;//Listの名前に番号を付けるのと、個数を数える
     public static int count=0;//個数を記録する(リザルト画面の平均時間を求める時に使う)
 
@@ -37,7 +38,7 @@ public class Challenge_List : MonoBehaviour
 
             //リストの子にあるテキストを取得する
             List_Child = List.transform.GetChild(0).gameObject;
-            Listnametext = List_Child.GetComponent<TextMeshProUGUI>();
+            Listnametext = List_Child.GetComponent<Text>();
             Debug.Log(List.transform.GetChild(0).gameObject);
 
             //読み込んだファイルの一行を今作ったリストの名前にする

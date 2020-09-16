@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 
 //買い物中にタイマーを進めて時間を記録し、表示させる
@@ -9,7 +10,7 @@ using TMPro;
 public class Timer_Ctrl : MonoBehaviour
 {
     public static bool count_up = true;//カウントアップをするかしないか（falseにすると時間を止められる）
-    [SerializeField] private TextMeshProUGUI time_text;//秒を文字で表示する
+    [SerializeField] private Text time_text;//秒を文字で表示する
     float time;//小数含めた秒数を格納する
     public static int total_time;//一個当たりの平均を求めるのに使う
     public static int second;//秒を格納する(結果発表の時に使う)

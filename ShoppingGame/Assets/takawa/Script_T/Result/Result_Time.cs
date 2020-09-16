@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Result_Time : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI Result_time_text;//買い物モード終了の時間を文字で表示する
+    [SerializeField] private Text Result_time_text;//買い物モード終了の時間を文字で表示する
     // Start is called before the first frame update
     void Start()
     {
