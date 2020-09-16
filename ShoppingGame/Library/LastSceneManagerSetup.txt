@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/takawa/Scene_T/Result.unity
-  isLoaded: 1
-  isActive: 1
