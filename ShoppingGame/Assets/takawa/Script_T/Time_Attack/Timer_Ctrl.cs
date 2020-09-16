@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class Timer_Ctrl : MonoBehaviour
 {
-    public static bool count_up = true;//カウントアップをするかしないか（falseにすると時間を止められる）
+    public static bool count_up = false;//カウントアップをするかしないか（falseにすると時間を止められる）
     [SerializeField] private Text time_text;//秒を文字で表示する
     float time;//小数含めた秒数を格納する
     public static int total_time;//一個当たりの平均を求めるのに使う
@@ -35,4 +35,6 @@ public class Timer_Ctrl : MonoBehaviour
         
         time_text.text = minute + "分" + second + "秒";//経過時間を表示
     }
+
+   
 }
