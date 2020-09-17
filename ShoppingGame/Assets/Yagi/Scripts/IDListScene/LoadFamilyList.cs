@@ -30,6 +30,7 @@ public class LoadFamilyList : MonoBehaviour
         #elif UNITY_ANDROID
             filePath = Application.persistentDataPath + @"\Family\FamilyData.txt";     //ファイルパス
         #endif
+
         ScrollRT = ScrollArea.GetComponent(typeof(RectTransform)) as RectTransform;
 
         
