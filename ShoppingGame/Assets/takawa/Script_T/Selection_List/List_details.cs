@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 using TMPro;
 
 //Selection_Listでリストのボタンを押したらリストの詳細を表示させる
 public class List_details : MonoBehaviour
 {
     private bool details_button = false;//リスト詳細が表示されているかいないか
+    [SerializeField] private GameObject button_text;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class List_details : MonoBehaviour
     {
         if (details_button == false)//詳細が表示されていなかったら表示させる
         {
+            //詳細を表示するボタンの表記を変える
+            button_text.GetComponent<Text>().text = "▼";
             //foreachでコンテンツの子オブジェクトを全て取得し、
             foreach (Transform Container_Child in List_Instanceate.Container.transform)
             {
@@ -40,6 +44,8 @@ public class List_details : MonoBehaviour
         }
         else//詳細が表示されていたら消す
         {
+            //詳細を表示するボタンの表記を変える
+            button_text.GetComponent<Text>().text = "◀";
             //foreachでコンテンツの子オブジェクトを全て取得し、
             foreach (Transform Container_Child in List_Instanceate.Container.transform)
             {
