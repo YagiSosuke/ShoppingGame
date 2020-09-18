@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/takawa/Scene_T/Time_Attack.unity
+- path: Assets/takawa/Scene_T/Result.unity
   isLoaded: 1
   isActive: 1
