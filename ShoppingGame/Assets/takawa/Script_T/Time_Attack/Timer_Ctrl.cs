@@ -15,6 +15,7 @@ public class Timer_Ctrl : MonoBehaviour
     public static int total_time;//一個当たりの平均を求めるのに使う
     public static int second;//秒を格納する(結果発表の時に使う)
     public static int minute;//分を格納する(結果発表の時に使う)
+    public static float millisecond;//ミリ秒を格納する(0.○○と表記されるので、そのまま文字にする時は100倍したりしないといけない)
 
     // Start is called before the first frame update
     void Start()//時間の初期化
@@ -31,9 +32,10 @@ public class Timer_Ctrl : MonoBehaviour
             total_time = Mathf.FloorToInt(time);//合計時間（int）を格納
             second = Mathf.FloorToInt(time % 60);//秒を格納
             minute = Mathf.FloorToInt(time / 60);//分を格納
+            millisecond = time - second;//ミリ秒を格納
         }
         
-        time_text.text = minute + "分" + second + "秒";//経過時間を表示
+        time_text.text = minute + ":" + second.ToString("00") + "."+ (Mathf.FloorToInt(millisecond*100).ToString("00"));//経過時間を表示
     }
 
    

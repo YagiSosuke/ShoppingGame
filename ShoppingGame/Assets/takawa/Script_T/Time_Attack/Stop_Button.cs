@@ -9,6 +9,7 @@ public class Stop_Button : MonoBehaviour
 {
     [SerializeField] private GameObject confirmation_obj;//ゲームを終了しますか？のオブジェクト
     public static bool One = true;//一回だけ動作する
+    [SerializeField] private GameObject guard_Panel;//不正防止パネル
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Stop_Button : MonoBehaviour
         if (One == true)
         {
             Timer_Ctrl.count_up = true;
+            guard_Panel.SetActive(false);
             this.transform.GetChild(0).GetComponent<Text>().text = "買い物おわり";
             One = false;
         }
