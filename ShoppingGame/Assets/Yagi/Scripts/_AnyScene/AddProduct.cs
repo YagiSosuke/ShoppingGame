@@ -41,7 +41,7 @@ public class AddProduct : MonoBehaviour
         //エリアのサイズを変更
         AreaRect.sizeDelta = new Vector2(AreaRect.sizeDelta.x, AreaRect.sizeDelta.y+200);
         //ボタンは最下部に置く
-        this.transform.localPosition = new Vector3(0, -AreaRect.sizeDelta.y/2+100, 0);
+        //this.transform.localPosition = new Vector3(0, -AreaRect.sizeDelta.y/2+100, 0);
         //IDを与える
         listname.ListContainerEntity[listname.ListLen].GetComponent<ProductContainerScript>().ListID = listname.ListLen;
         listname.ListLen++;             //商品数を増やす
