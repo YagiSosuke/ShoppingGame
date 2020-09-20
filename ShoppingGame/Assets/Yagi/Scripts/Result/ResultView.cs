@@ -28,6 +28,9 @@ public class ResultView : MonoBehaviour
     float ResultNum;                   //1つ当たりの時間
     float ResultNumCount = 0;          //1つ当たりの時間をカウントする
 
+    bool EffectF = false;
+    [SerializeField] GameObject PaperEffect;            //紙吹雪のエフェクト
+
     float count = 0;          //時間をカウントする変数
 
     // Start is called before the first frame update
@@ -134,6 +137,11 @@ public class ResultView : MonoBehaviour
         }
         else
         {
+            if (!EffectF)
+            {
+                Instantiate(PaperEffect);
+            }
+            EffectF = true;
             ResultText.color = Color.white;
         }
 

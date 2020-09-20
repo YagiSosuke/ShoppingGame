@@ -3,7 +3,14 @@ guid: 11b2fa6bf196e9143accdce23839ba70
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ResultWord: {instanceID: 0}
+  - TotalTime: {instanceID: 0}
+  - OnceTime: {instanceID: 0}
+  - Bonus: {instanceID: 0}
+  - Result: {instanceID: 0}
+  - PaperEffect: {fileID: 1789754796843348332, guid: 5eb575cbd8ac6f346b34af0fa5612eb7,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
