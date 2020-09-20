@@ -28,18 +28,22 @@ public class ResultView : MonoBehaviour
     float ResultNum;                   //1つ当たりの時間
     float ResultNumCount = 0;          //1つ当たりの時間をカウントする
 
+    bool EffectF = false;
+    [SerializeField] GameObject PaperEffect;            //紙吹雪のエフェクト
+
     float count = 0;          //時間をカウントする変数
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Timer_Ctrl.millisecond = " + Timer_Ctrl.millisecond);
         TotalTimeText = TotalTime.GetComponent<Text>();
         TotalTimeText.color = new Color(0, 0, 0, 0);
-        TotalTimeNum = (Timer_Ctrl.minute * 100 + Timer_Ctrl.second) * 100;
+        TotalTimeNum = (Timer_Ctrl.minute * 100 + Timer_Ctrl.second + Timer_Ctrl.millisecond) * 100;
 
         OnceTimeText = OnceTime.GetComponent<Text>();
         OnceTimeText.color = new Color(0, 0, 0, 0);
-        OnceTimeNum = (float)Timer_Ctrl.total_time / Challenge_List.count;
+        OnceTimeNum = (int)TotalTimeNum/100.0f / Challenge_List.count;
 
         BonusImage = Bonus.GetComponent<Image>();
         BonusImage.color = new Color(224 / 255, 240 / 255, 1, 0);
@@ -133,6 +137,11 @@ public class ResultView : MonoBehaviour
         }
         else
         {
+            if (!EffectF)
+            {
+                Instantiate(PaperEffect);
+            }
+            EffectF = true;
             ResultText.color = Color.white;
         }
 
