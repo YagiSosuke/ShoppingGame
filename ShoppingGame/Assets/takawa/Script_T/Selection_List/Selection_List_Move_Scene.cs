@@ -16,6 +16,8 @@ public class Selection_List_Move_Scene : MonoBehaviour
     //TextMeshProUGUI Listnametext;//選択したリストに書いてある
     public static string fileName;//Toggleで選んだリストのファイル名
     int true_count = 0;//Toggleを一つだけ選んだかどうか
+
+    [SerializeField] GameObject AttentionPanel;             //ゲーム開始前に表示するパネル
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,8 @@ public class Selection_List_Move_Scene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //常にチェックボックスの状態を検索する。変化があったらシーン切り替えを実行
+        NextScene();
     }
 
     public void NextScene()//選択したリストのデータを保持したまま次のシーンへ行く
@@ -37,18 +40,26 @@ public class Selection_List_Move_Scene : MonoBehaviour
             Debug.Log("取得確認" + myList_parent);
             myList_Child = myList_parent.transform.GetChild(1).gameObject;
             ListToggle = myList_Child.GetComponent<Toggle>();
+
             if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
             {
                 Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
                 fileName = myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text;
                 true_count++;
                 Debug.Log("fileName:" + fileName);
+                
+                ListToggle.isOn = false;        //追加 - チェックボックスを外す
+                Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
             }
         }
         if (true_count == 1)//一つだけリストを選んでいたら次のシーンに行ける
         {
+            AttentionPanel.SetActive(true);     //開始前パネルを開く
+            true_count++;
+            /*
             Debug.Log("次のシーンへ");
             SceneManager.LoadScene("Time_Attack");
+            */
         }
         else//0か1つ以上リストを選んでいたら次のシーンに行けない
         {
