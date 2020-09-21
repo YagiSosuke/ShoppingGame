@@ -53,17 +53,11 @@ public class InputPhone : MonoBehaviour
                 tc.text = "visible";
                 */
                 
+
             if (TouchScreenKeyboard.visible == true && input.isFocused)
             {
                 Rect.movementType = ScrollRect.MovementType.Unrestricted;
-                if (List.ListID == ListName.ListLen - 1)
-                {
-                    ScrollArea.transform.localPosition = new Vector3(0, 300 + ListName.ListLen * 100, 0);
-                }
-                else
-                {
-                    ScrollArea.transform.localPosition = new Vector3(0, (300 + ListName.ListLen * 100) - ((ListName.ListLen-1)-List.ListID)*200, 0);
-                }
+                    ScrollArea.transform.localPosition = new Vector3(0, List.ListID * 200 + 675, 0);
             }
             else if(TouchScreenKeyboard.visible == false)
             {

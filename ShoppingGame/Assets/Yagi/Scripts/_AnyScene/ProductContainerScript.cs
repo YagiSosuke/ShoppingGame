@@ -59,7 +59,7 @@ public class ProductContainerScript : MonoBehaviour
         //エリアのサイズを変更
         AreaRect.sizeDelta = new Vector2(AreaRect.sizeDelta.x, AreaRect.sizeDelta.y - 200);
         //追加ボタンの位置を上げる
-        AddButton.transform.localPosition = new Vector3(0, -AreaRect.sizeDelta.y / 2 + 100, 0);
+        //AddButton.transform.localPosition = new Vector3(0, -AreaRect.sizeDelta.y / 2 + 100, 0);
     }
 
     //空白が入力されたとき

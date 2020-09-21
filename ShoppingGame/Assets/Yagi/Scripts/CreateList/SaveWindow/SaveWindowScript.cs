@@ -13,6 +13,7 @@ public class SaveWindowScript : MonoBehaviour
     string fileName;        //ファイル名
     [SerializeField] ListName list;     //リストを管理するスクリプト
     [SerializeField] GameObject SavePanel;     //保存時に表示するウィンドウ
+    [SerializeField] Text SavePanelText;        //保存ウィンドウのテキスト
     [SerializeField] GameObject SaveCorrectPanel;     //保存完了時に表示するウィンドウ
     [SerializeField] InputField ListNameInput;      //リスト名を入力する領域
 
@@ -102,6 +103,7 @@ public class SaveWindowScript : MonoBehaviour
         else if (list.ListLen > 0)
         {
             SavePanel.SetActive(true);
+            SavePanelText.text = "「" + ListNameInput.text + "」\nこのファイル名で保存します";
         }
         //リストの項目がない場合は保存できない
         else
