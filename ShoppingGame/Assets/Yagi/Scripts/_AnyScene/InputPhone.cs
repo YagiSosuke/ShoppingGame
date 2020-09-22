@@ -57,7 +57,7 @@ public class InputPhone : MonoBehaviour
             if (TouchScreenKeyboard.visible == true && input.isFocused)
             {
                 Rect.movementType = ScrollRect.MovementType.Unrestricted;
-                    ScrollArea.transform.localPosition = new Vector3(0, List.ListID * 200 + 675, 0);
+                    ScrollArea.transform.localPosition = new Vector3(0, List.ListID * 200 + 600, 0);
             }
             else if(TouchScreenKeyboard.visible == false)
             {
