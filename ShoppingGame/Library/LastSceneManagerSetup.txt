@@ -1,8 +1,15 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/takawa/Scene_T/Result.unity
 =======
 - path: Assets/takawa/Scene_T/Time_Attack.unity
 >>>>>>> Repair
+=======
+- path: Assets/takawa/Scene_T/Time_Attack.unity
+=======
+- path: Assets/takawa/Scene_T/Result.unity
+>>>>>>> f0502339dd33ae9e584449b5058dc17e95c956d3
+>>>>>>> master
   isLoaded: 1
   isActive: 1
