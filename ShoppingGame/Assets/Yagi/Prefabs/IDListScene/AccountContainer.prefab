@@ -116,7 +116,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3527179214766676582}
-        m_MethodName: RemoveButton
+        m_MethodName: PauseWindowOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
