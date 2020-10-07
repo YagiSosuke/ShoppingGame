@@ -15,6 +15,8 @@ public class BackSceneScript : MonoBehaviour
     //前のシーンに戻る
     public void BackScene()
     {
+        SceneManager.LoadScene("Title");
+        /*
         if (ListName.text == "")
         {
             SceneManager.LoadScene("Title");
@@ -25,5 +27,6 @@ public class BackSceneScript : MonoBehaviour
             //保存する
             SaveButton.WindowOpen();
         }
+        */
     }
 }
