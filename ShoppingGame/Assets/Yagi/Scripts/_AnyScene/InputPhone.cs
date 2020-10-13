@@ -52,8 +52,8 @@ public class InputPhone : MonoBehaviour
             else if (input.touchScreenKeyboard.status == TouchScreenKeyboard.Status.Visible)
                 tc.text = "visible";
                 */
-                
 
+#if UNITY_ANDROID
             if (TouchScreenKeyboard.visible == true && input.isFocused)
             {
                 Rect.movementType = ScrollRect.MovementType.Unrestricted;
@@ -63,6 +63,7 @@ public class InputPhone : MonoBehaviour
             {
                 Rect.movementType = ScrollRect.MovementType.Elastic;
             }
+#endif
 
         }
     }
