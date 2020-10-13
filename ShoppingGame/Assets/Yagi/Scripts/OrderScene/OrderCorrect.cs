@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -108,6 +109,8 @@ public class OrderCorrect : MonoBehaviour
                             //サーバ - データストアに値をアップロード
                             NCMBObject OrderClass = new NCMBObject("_" + (string)obj["ID"]);      //サーバ - 依頼先のクラスを作成
                             OrderClass["message"] = List;       //値を設定
+                            OrderClass["SendID"] = PlayerPrefs.GetString("IDCreateYet", "null");       //値を設定
+                            OrderClass["OrderDate"] = (DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString());
                             OrderClass.SaveAsync();             // データストアへの登録
                         }
                     }

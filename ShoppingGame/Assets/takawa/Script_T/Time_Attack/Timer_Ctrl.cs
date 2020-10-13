@@ -32,7 +32,7 @@ public class Timer_Ctrl : MonoBehaviour
             total_time = Mathf.FloorToInt(time);//合計時間（int）を格納
             second = Mathf.FloorToInt(time % 60);//秒を格納
             minute = Mathf.FloorToInt(time / 60);//分を格納
-            millisecond = time - second;//ミリ秒を格納
+            millisecond = time - second-(minute*60);//ミリ秒を格納
         }
         
         time_text.text = minute + ":" + second.ToString("00") + "."+ (Mathf.FloorToInt(millisecond*100).ToString("00"));//経過時間を表示
