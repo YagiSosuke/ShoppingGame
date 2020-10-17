@@ -1,0 +1,39 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using System.IO;
+
+//シーンを開いた時、現在のランキングを設定するスクリプト
+
+public class RankPreview : MonoBehaviour
+{
+    //ファイルパス
+    string filePath;
+    //スコアを表示するテキスト
+    [SerializeField] Text[] ScoreText = new Text[5];
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        #if UNITY_EDITOR        //デバッグ時
+            filePath = Application.dataPath + @"\Ranking\TopScore.txt";
+        #elif UNITY_ANDROID  //リリース時
+            filePath = Application.persistentDataPath + @"\Ranking\TopScore.txt";
+        #endif
+
+        //ファイルが無かった時にファイルを作成
+        if(!File.Exists(filePath))
+        {
+            File.AppendAllText(filePath, "99:99\n99:99\n99:99\n99:99\n99:99");
+        }
+
+        string[] allText = File.ReadAllLines(filePath);
+
+        for(int i = 0; i < 5; i++)
+        {
+            //テキストに値をセット
+            ScoreText[i].text = allText[i];
+        }
+    }
+}

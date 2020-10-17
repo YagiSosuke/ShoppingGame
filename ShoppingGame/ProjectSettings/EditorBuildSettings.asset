@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/takawa/Scene_T/Result.unity
     guid: f2785700bfbd01c4892a9634de349102
+  - enabled: 1
+    path: Assets/Yagi/Scenes/Ranking.unity
+    guid: ffc56eb9311681d409fd1fddc64ba7f6
   m_configObjects: {}
