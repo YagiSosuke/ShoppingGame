@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
+using NCMB;
 
 //テキストファイルの情報を全てリストに表示させ、myListにリストの名前を格納させる
 
@@ -18,6 +19,7 @@ public class List_Instanceate : MonoBehaviour
     public int List_num = 0;//Listの名前に番号を付けるのと、個数を数える
     public static GameObject Container;//コンテンツを入れて置くゲームオブジェクト(staticバージョン)
     [SerializeField] private GameObject List_detail;//作成しておいたリスト
+    string myID;//自分のアカウントのID
 
     //テキストファイルの情報を全てリストに表示させ、myListにリストの名前を格納させる
     void Start()
@@ -61,6 +63,13 @@ public class List_Instanceate : MonoBehaviour
             Debug.Log("------------一つのリスト表示終了-----------------");
         }
         Container = Containers;
+
+        //自分のアカウントのIDを取得
+        myID = PlayerPrefs.GetString("IDCreateYet");
+        Debug.Log(myID);
+        request_List();
+        //①自分向けの依頼が来ていたかどうかを確認する
+        //②あったら、foreachで該当するリストを表示する
     }
 
     // Update is called once per frame
@@ -97,5 +106,49 @@ public class List_Instanceate : MonoBehaviour
             Instantiate(List_detail, new Vector3(0, 0, 0), Quaternion.identity, Containers.transform);//Containers.transform.position.y//- (myList.Count) * 200
             
         }
+    }
+
+    void request_List()
+    {
+        //①サーバーが更新されたかどうかを確認する
+        //QueryTestを検索するクラスを作成
+        NCMBQuery<NCMBObject> my_account = new NCMBQuery<NCMBObject>("_" + myID);//自分のクラスを探す
+        //基準の時間よりも後に新しくデータが作られていたら  
+        //IDの値が正しいオブジェクト検索
+        //データベースを検索する変数(クエリ)
+        //NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("_604");
+        my_account.WhereNotEqualTo("SendID", "-1");
+        my_account.FindAsync((List<NCMBObject> objList, NCMBException e) =>
+        {
+            if (e != null)
+            {
+                //検索失敗時の処理
+                Debug.Log("検索に失敗しました");
+            }
+            else
+            {
+                //IDがありえる数値のオブジェクトを出力
+                foreach (NCMBObject obj in objList)
+                {
+                    Debug.Log("message:" + obj["message"] + "\nSendID:" + obj["SendID"] + "\nCreateDate" + obj.CreateDate);
+                    //createdate_tmp = obj.CreateDate.ToString();
+                    ////削除する文字を1文字ずつ削除する
+                    //foreach (char c in del)
+                    //{
+                    //    createdate_tmp = createdate_tmp.Replace(c.ToString(), "");
+                    //}
+                    //createdate = long.Parse(createdate_tmp);
+                    //Debug.Log(createdate);
+                    //if (createdate >= now_datetime)
+                    //{
+                    //    Debug.Log("新しいリストが来た");
+                    //    notification_text = obj["SendID"].ToString();
+                    //    Debug.Log(notification_text);
+                    //    Instantiate(notification_obj, new Vector3(0, 0, 0), Quaternion.identity);
+                    //}
+                }
+            }
+        });
+
     }
 }

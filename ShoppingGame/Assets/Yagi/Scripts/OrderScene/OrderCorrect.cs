@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,6 +83,23 @@ public class OrderCorrect : MonoBehaviour
         //依頼先を名前 -> IDに変える必要がある
         //Nameが指定されたもののIDを検索する
 
+
+        //保存日を設定
+        String Syear, Smonth, Sday, Shour, Sminute, Ssecond, Sdate;
+        Syear = DateTime.Now.Year.ToString();
+        if (DateTime.Now.Month < 10) Smonth = "0" + DateTime.Now.Month.ToString();
+        else Smonth = DateTime.Now.Month.ToString();
+        if (DateTime.Now.Day < 10) Sday = "0" + DateTime.Now.Day.ToString();
+        else Sday = DateTime.Now.Day.ToString();
+        if (DateTime.Now.Hour < 10) Shour = "0" + DateTime.Now.Hour.ToString();
+        else Shour = DateTime.Now.Hour.ToString();
+        if (DateTime.Now.Minute < 10) Sminute = "0" + DateTime.Now.Minute.ToString();
+        else Sminute = DateTime.Now.Minute.ToString();
+        if (DateTime.Now.Second < 10) Ssecond = "0" + DateTime.Now.Second.ToString();
+        else Ssecond = DateTime.Now.Second.ToString();
+
+        Sdate = Syear + Smonth + Sday + Shour + Sminute + Ssecond;
+
         //UserIDsを検索するクラスを作成
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
         //Nameの値が入力されたものと一致するオブジェクト検索
@@ -108,6 +126,8 @@ public class OrderCorrect : MonoBehaviour
                             //サーバ - データストアに値をアップロード
                             NCMBObject OrderClass = new NCMBObject("_" + (string)obj["ID"]);      //サーバ - 依頼先のクラスを作成
                             OrderClass["message"] = List;       //値を設定
+                            OrderClass["SendID"] = PlayerPrefs.GetString("IDCreateYet", "null");       //値を設定
+                            OrderClass["OrderDate"] = Sdate;
                             OrderClass.SaveAsync();             // データストアへの登録
                         }
                     }
