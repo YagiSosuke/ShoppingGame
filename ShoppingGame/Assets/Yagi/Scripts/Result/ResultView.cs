@@ -38,6 +38,8 @@ public class ResultView : MonoBehaviour
 
     float count = 0;          //時間をカウントする変数
 
+    RankingUpdate rankscript;       //ランキングを更新するスクリプト
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,8 +62,11 @@ public class ResultView : MonoBehaviour
 
         ResultText = Result.GetComponent<Text>();
         ResultText.color = new Color(0, 0, 0, 0);
-        ResultNum = OnceTimeNum - 10;
+        ResultNum = OnceTimeNum - 10;       //ボーナスを加える処理、後に修正する必要アリ
         
+        //ランキングの更新をする
+        rankscript = GetComponent<RankingUpdate>();
+        rankscript.ScoreUpdate(ResultNum);
     }
 
     // Update is called once per frame
@@ -161,6 +166,7 @@ public class ResultView : MonoBehaviour
         }
         else
         {
+            //エフェクトを出す
             if (!EffectF)
             {
                 Instantiate(PaperEffect);

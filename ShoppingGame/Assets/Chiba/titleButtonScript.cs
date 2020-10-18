@@ -37,7 +37,7 @@ public class titleButtonScript : MonoBehaviour
                 Debug.Log("依頼ボタンが押されました");
                 break;
             case SceneButton.Rank:
-                //SceneManager.LoadScene("");
+                SceneManager.LoadScene("Ranking");
                 Debug.Log("ランキングボタンが押されました");
                 break;
             case SceneButton.IDRegister:
