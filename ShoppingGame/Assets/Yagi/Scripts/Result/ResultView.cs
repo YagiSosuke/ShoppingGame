@@ -46,7 +46,9 @@ public class ResultView : MonoBehaviour
         Debug.Log("Timer_Ctrl.millisecond = " + Timer_Ctrl.millisecond);
         TotalTimeText = TotalTime.GetComponent<Text>();
         TotalTimeText.color = new Color(0, 0, 0, 0);
-        TotalTimeNum = (Timer_Ctrl.minute * 100 + Timer_Ctrl.second + Timer_Ctrl.millisecond) * 100;
+        TotalTimeNum = (int)((Timer_Ctrl.minute * 60 + Timer_Ctrl.second + Timer_Ctrl.millisecond)*100);
+        TotalTimeNum = TotalTimeNum / 100;
+        Debug.Log("合計時間" + TotalTimeNum);
 
         GoodsText = Goods.GetComponent<Text>();
         GoodsText.color = new Color(0, 0, 0, 0);
@@ -54,7 +56,8 @@ public class ResultView : MonoBehaviour
 
         OnceTimeText = OnceTime.GetComponent<Text>();
         OnceTimeText.color = new Color(0, 0, 0, 0);
-        OnceTimeNum = (int)TotalTimeNum/100.0f / Challenge_List.count;
+        OnceTimeNum = TotalTimeNum / Challenge_List.count;
+        Debug.Log("1つ当たりの時間" + OnceTimeNum);
 
         BonusImage = Bonus.GetComponent<Image>();
         BonusImage.color = new Color(224 / 255, 240 / 255, 1, 0);
@@ -63,7 +66,8 @@ public class ResultView : MonoBehaviour
         ResultText = Result.GetComponent<Text>();
         ResultText.color = new Color(0, 0, 0, 0);
         ResultNum = OnceTimeNum - 10;       //ボーナスを加える処理、後に修正する必要アリ
-        
+        Debug.Log("最終時間" + ResultNum);
+
         //ランキングの更新をする
         rankscript = GetComponent<RankingUpdate>();
         rankscript.ScoreUpdate(ResultNum);
@@ -74,16 +78,10 @@ public class ResultView : MonoBehaviour
     {
         if(count < 3.0f)
         {
-            TotalTimeNumCount = Mathf.Lerp(0, TotalTimeNum, count-1f);     //数字が徐々に増えていく
+            TotalTimeNumCount = Mathf.Lerp(0, TotalTimeNum, count-2f);     //数字が徐々に増えていく
 
             //下2桁表示にする
-            TotalTimeNumCount = (int)TotalTimeNumCount/100.0f;
-            TotalTimeText.text = "" + ((int)TotalTimeNumCount / 100) + ":" + (TotalTimeNumCount - ((int)TotalTimeNumCount / 100)*100);
-
-            if (TotalTimeNumCount % 10 == 0)
-            {
-                TotalTimeText.text += "0";
-            }
+            TotalTimeText.text = "" + ((int)TotalTimeNumCount / 60) + ":" + (TotalTimeNumCount - ((int)TotalTimeNumCount / 60)).ToString("00.00");
             TotalTime.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count-2f)* (count-2f)* (count-2f)* (count-2f));
             TotalTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, (count-2f));
 
@@ -92,9 +90,7 @@ public class ResultView : MonoBehaviour
         {
             TotalTimeNumCount = Mathf.Lerp(0, TotalTimeNum, 1);     //数字が徐々に増えていく
             //下2桁表示にする
-            TotalTimeNumCount = (int)TotalTimeNumCount / 100.0f;
-            TotalTimeText.text = "" + ((int)TotalTimeNumCount / 100) + ":" + (TotalTimeNumCount - ((int)TotalTimeNumCount / 100) * 100);
-            if (TotalTimeNumCount % 10 == 0) TotalTimeText.text += "0";
+            TotalTimeText.text = "" + ((int)TotalTimeNumCount / 60) + ":" + (TotalTimeNumCount - ((int)TotalTimeNumCount / 60) * 60).ToString("00.00");
             TotalTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, 1);
 
 
@@ -118,12 +114,7 @@ public class ResultView : MonoBehaviour
             //下2桁表示にする
             OnceTimeNumCount = OnceTimeNumCount * 100.0f;
             OnceTimeNumCount = (int)OnceTimeNumCount / 100.0f;
-            OnceTimeText.text = "" + Mathf.FloorToInt(OnceTimeNumCount / 60)+":";
-            if (OnceTimeNumCount / 10 == 0)
-            {
-                OnceTimeText.text += "0";
-            }
-            OnceTimeText.text += (OnceTimeNumCount - (int)OnceTimeNumCount / 60 *60);
+            OnceTimeText.text = "" + Mathf.FloorToInt(OnceTimeNumCount / 60)+":"+(OnceTimeNumCount - (int)OnceTimeNumCount / 60 *60).ToString("00.00");
 
             OnceTime.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count-4.0f)* (count - 4.0f)* (count - 4.0f)* (count - 4.0f));
             OnceTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, count-4.0f);
@@ -133,9 +124,7 @@ public class ResultView : MonoBehaviour
             OnceTimeNumCount = Mathf.Lerp(0, OnceTimeNum, 1);     //数字が徐々に増えていく
             OnceTimeNumCount = OnceTimeNumCount * 100.0f;
             OnceTimeNumCount = (int)OnceTimeNumCount / 100.0f;
-            OnceTimeText.text = "" + Mathf.FloorToInt(OnceTimeNumCount / 60) + ":";
-            if (OnceTimeNumCount / 10 == 0) OnceTimeText.text += "0";
-            OnceTimeText.text += (OnceTimeNumCount - (int)OnceTimeNumCount / 60 * 60);
+            OnceTimeText.text = "" + Mathf.FloorToInt(OnceTimeNumCount / 60) + ":" + (OnceTimeNumCount - (int)OnceTimeNumCount / 60 * 60).ToString("00.00");
             OnceTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, 1);
 
             
@@ -153,14 +142,8 @@ public class ResultView : MonoBehaviour
             //下2桁表示にする
             ResultNumCount = ResultNumCount * 100.0f;
             ResultNumCount = (int)ResultNumCount / 100.0f;
-            ResultText.text = "" + Mathf.FloorToInt(ResultNumCount / 60) + ":";
-            if (ResultNumCount / 10 == 0)
-            {
-                ResultText.text += "0";
-            }
-            ResultText.text += (ResultNumCount - (int)ResultNumCount / 60 * 60);
-
-
+            ResultText.text = "" + Mathf.FloorToInt(ResultNumCount / 60) + ":" + (ResultNumCount - (int)ResultNumCount / 60 * 60).ToString("00.00");
+            
             Result.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count-6.0f)* (count - 6.0f)* (count - 6.0f)* (count - 6.0f));
             ResultText.color = Color.Lerp(new Color(1, 1, 1, 0), Color.white, count - 6.0f);
         }

@@ -43,7 +43,9 @@ public class RankingUpdate : MonoBehaviour
         {
             string[] RankScoreString = allText[i].Split(':');
             RankScoreFloat[i] = float.Parse(RankScoreString[0]) * 60 + float.Parse(RankScoreString[1]);
+            Debug.Log("" + i + "位の時間は" + RankScoreFloat[i] + "秒");
         }
+
 
         //現在のスコアをランキングに反映
         float temp, temp2;
@@ -67,7 +69,7 @@ public class RankingUpdate : MonoBehaviour
         string[] ScoreTime = new string[5];
         for(int i = 0; i < 5; i++)
         {
-            ScoreTime[i] = ((int)(RankScoreFloat[i]) / 60).ToString() + ":" + (RankScoreFloat[i] - ((int)(RankScoreFloat[i]) / 60)).ToString();
+            ScoreTime[i] = ((int)(RankScoreFloat[i]) / 60).ToString() + ":" + (RankScoreFloat[i] - ((int)(RankScoreFloat[i]) / 60)*60).ToString("00.00");
         }
 
 

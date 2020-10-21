@@ -534,6 +534,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1626464829}
     m_Modifications:
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 44.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -490.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612358, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1125784406308692364, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
         type: 3}
       propertyPath: m_Name
@@ -667,6 +682,21 @@ PrefabInstance:
     - target: {fileID: 1125784405737111620, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
         type: 3}
       propertyPath: m_Text
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 44.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -490.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612358, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1125784406308692364, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
@@ -827,6 +857,21 @@ PrefabInstance:
       value: '2
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 44.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -490.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612358, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1125784406308692364, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
         type: 3}
@@ -1303,6 +1348,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 44.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -490.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612358, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1125784406308692364, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
         type: 3}
       propertyPath: m_Name
@@ -1447,6 +1507,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 44.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612357, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -490.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125784406287612358, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1125784406308692364, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
         type: 3}
