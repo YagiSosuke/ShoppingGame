@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Chiba/Title.unity
+    path: Assets/Chiba/Scene_C/Title.unity
     guid: bed9991e03c639a4586d49c7fdfa2d1e
   - enabled: 1
     path: Assets/Yagi/Scenes/CreateListScene.unity
