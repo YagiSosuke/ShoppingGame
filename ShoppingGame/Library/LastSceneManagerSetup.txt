@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Chiba/Title.unity
-=======
-- path: Assets/Chiba/Scene_C/Title.unity
->>>>>>> master
+- path: Assets/Yagi/Scenes/Test.unity
   isLoaded: 1
   isActive: 1

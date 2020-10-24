@@ -70,7 +70,7 @@ public class ResultView : MonoBehaviour
 
         //ランキングの更新をする
         rankscript = GetComponent<RankingUpdate>();
-        rankscript.ScoreUpdate(ResultNum);
+        rankscript.ScoreUpdate(ResultNum, TotalTimeText.text, GoodsText.text, OnceTimeText.text);
     }
 
     // Update is called once per frame
