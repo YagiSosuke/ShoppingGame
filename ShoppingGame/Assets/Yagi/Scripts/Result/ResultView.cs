@@ -46,7 +46,7 @@ public class ResultView : MonoBehaviour
         Debug.Log("Timer_Ctrl.millisecond = " + Timer_Ctrl.millisecond);
         TotalTimeText = TotalTime.GetComponent<Text>();
         TotalTimeText.color = new Color(0, 0, 0, 0);
-        TotalTimeNum = (int)((Timer_Ctrl.minute * 60 + Timer_Ctrl.second + Timer_Ctrl.millisecond)*100);
+        TotalTimeNum = (int)((Timer_Ctrl.minute * 60 + Timer_Ctrl.second + Timer_Ctrl.millisecond) * 100);
         TotalTimeNum = TotalTimeNum / 100;
         Debug.Log("合計時間" + TotalTimeNum);
 
@@ -70,7 +70,10 @@ public class ResultView : MonoBehaviour
 
         //ランキングの更新をする
         rankscript = GetComponent<RankingUpdate>();
-        rankscript.ScoreUpdate(ResultNum);
+        string temp0 = (((int)TotalTimeNum)/60).ToString() + ":" + (TotalTimeNum - (((int)TotalTimeNum) / 60)*60).ToString("00.00");
+        string temp1 = GoodsNum.ToString();
+        string temp2 = (((int)OnceTimeNum) / 60).ToString() + ":" + (OnceTimeNum - (((int)OnceTimeNum) / 60)*60).ToString("00.00");
+        rankscript.ScoreUpdate(ResultNum, temp0, temp1, temp2);
     }
 
     // Update is called once per frame
@@ -84,7 +87,6 @@ public class ResultView : MonoBehaviour
             TotalTimeText.text = "" + ((int)TotalTimeNumCount / 60) + ":" + (TotalTimeNumCount - ((int)TotalTimeNumCount / 60)).ToString("00.00");
             TotalTime.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count-2f)* (count-2f)* (count-2f)* (count-2f));
             TotalTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, (count-2f));
-
         }
         else if (count < 4.0f)
         {
