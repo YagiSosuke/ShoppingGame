@@ -24,7 +24,7 @@ public class DetailPreview : MonoBehaviour
     Vector3 nowPos;             //現在位置
     Vector3 afterPos;           //移動後の位置
 
-    float count;
+    public float count;
 
     // Start is called before the first frame update
     void Start()
@@ -63,15 +63,15 @@ public class DetailPreview : MonoBehaviour
             {
                 if (i == nowOpenDetail)
                 {
-                    RankingObject[i].transform.position = Vector3.Lerp(nowPos, afterPos, Mathf.Pow(count, 1));
+                    RankingObject[i].transform.position = Vector3.Lerp(nowPos, afterPos, 1-Mathf.Pow(1-count, 5));
                 }
                 else
                 {
                     RankingObject[i].GetComponent<CanvasGroup>().alpha = (1 - Mathf.Pow(count, 1));
                 }
             }
-            DetailPanel.transform.localScale = Vector3.Lerp(new Vector3(1, 0, 1), Vector3.one, Mathf.Pow(count, 1));
-            count += Time.deltaTime;
+            DetailPanel.GetComponent<CanvasGroup>().alpha = Mathf.Pow(count, 1);
+            count += Time.deltaTime * 2;
         }
         else
         {
@@ -86,7 +86,7 @@ public class DetailPreview : MonoBehaviour
                     RankingObject[i].GetComponent<CanvasGroup>().alpha = 0;
                 }
             }
-            DetailPanel.transform.localScale = Vector3.Lerp(new Vector3(1, 0, 1), Vector3.one, 1);
+            DetailPanel.GetComponent<CanvasGroup>().alpha = 1;
         }
     }
 
@@ -99,15 +99,15 @@ public class DetailPreview : MonoBehaviour
             {
                 if (i == nowOpenDetail)
                 {
-                    RankingObject[i].transform.position = Vector3.Lerp(afterPos, nowPos, Mathf.Pow(count, 1));
+                    RankingObject[i].transform.position = Vector3.Lerp(afterPos, nowPos, 1 - Mathf.Pow(1 - count, 5));
                 }
                 else
                 {
                     RankingObject[i].GetComponent<CanvasGroup>().alpha = (Mathf.Pow(count, 1));
                 }
             }
-            DetailPanel.transform.localScale = Vector3.Lerp(Vector3.one, new Vector3(1, 0, 1), Mathf.Pow(count, 1));
-            count += Time.deltaTime;
+            DetailPanel.GetComponent<CanvasGroup>().alpha = (1 - Mathf.Pow(count, 1));
+            count += Time.deltaTime * 2;
         }
         else
         {
@@ -122,7 +122,7 @@ public class DetailPreview : MonoBehaviour
                     RankingObject[i].GetComponent<CanvasGroup>().alpha = 1;
                 }
             }
-            DetailPanel.transform.localScale = Vector3.Lerp(Vector3.one, new Vector3(1, 0, 1), 1);
+            DetailPanel.GetComponent<CanvasGroup>().alpha = 0;
         }
     }
 
@@ -130,6 +130,9 @@ public class DetailPreview : MonoBehaviour
     public void ButtonPush(int num)
     {
         DetailPreviewF = !DetailPreviewF;
+        //移動時に使うカウントを0にセットする
+        count = 0;
+
         //詳細を開いた時
         if (DetailPreviewF)
         {
@@ -145,7 +148,5 @@ public class DetailPreview : MonoBehaviour
             OnceTimeText.text = DetailText[2];
 
         }
-        //移動時に使うカウントを0にセットする
-        count = 0;
     }
 }

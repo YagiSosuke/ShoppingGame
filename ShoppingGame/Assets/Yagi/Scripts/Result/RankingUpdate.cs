@@ -6,64 +6,73 @@ using System;
 
 //今回のスコアによってランキングを更新するスクリプト
 
+
+//詳細データ
+public class DetailData
+{
+    string TotalTime;   //合計時間
+    string ItemNum;     //商品数
+    string OnceTime;    //商品一つ当たりの時間
+
+    //値設定メソッド
+    public void DataSet(string Data0, string Data1, string Data2)
+    {
+        Debug.Log("値設定");
+        TotalTime = Data0;
+        ItemNum = Data1;
+        OnceTime = Data2;
+    }
+
+    public void setTotalTime(string data)
+    {
+        TotalTime = data;
+    }
+    public string getTotalTime()
+    {
+        return TotalTime;
+    }
+    public void setItemNum(string data)
+    {
+        ItemNum = data;
+    }
+    public string getItemNum()
+    {
+        return ItemNum;
+    }
+    public void setOnceTime(string data)
+    {
+        OnceTime = data;
+    }
+    public string getOnceTime()
+    {
+        return OnceTime;
+    }
+}
+
 public class RankingUpdate : MonoBehaviour
 {
-    //詳細データ
-    class DetailData
-    {
-        string TotalTime;   //合計時間
-        string ItemNum;     //商品数
-        string OnceTime;    //商品一つ当たりの時間
-
-        //値設定メソッド
-        public void DataSet(string[] Data)
-        {
-            TotalTime = Data[0];
-            ItemNum = Data[1];
-            OnceTime = Data[2];
-        }
-
-        public void setTotalTime(string data)
-        {
-            TotalTime = data;
-        }
-        public string getTotalTime()
-        {
-            return TotalTime;
-        }
-        public void setItemNum(string data)
-        {
-            ItemNum = data;
-        }
-        public string getItemNum()
-        {
-            return ItemNum;
-        }
-        public void setOnceTime(string data)
-        {
-            OnceTime = data;
-        }
-        public string getOnceTime()
-        {
-            return OnceTime;
-        }
-    }
 
     string filePath;            //ファイルパス
     float[] RankScoreFloat = new float[5];          //ランキングトップ5を格納
 
     //詳細情報のファイルパス
     string detailFilePath;
-    DetailData[] detailData = new DetailData[5];        //詳細情報 
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
     
     //今回の結果を引数、ランキングを更新するスクリプト
     public void ScoreUpdate(float ResultNum, string RTotalTime, string RItemNum, string ROnceTime)
     {
+        DetailData[] detaildata = new DetailData[5];
+        for(int i = 0; i < 5; i++)
+        {
+            detaildata[i] = new DetailData();
+        }
+
         #if UNITY_EDITOR        //デバッグ時
             filePath = Application.dataPath + @"\Ranking\TopScore.txt";
             detailFilePath = Application.dataPath + @"\Ranking\";
@@ -91,7 +100,8 @@ public class RankingUpdate : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             string[] DetailText = File.ReadAllLines(detailFilePath + "Detail" + i + ".txt");
-            detailData[i].DataSet(DetailText);
+            detaildata[i].DataSet(DetailText[0], DetailText[1], DetailText[2]);
+            Debug.Log(i + "の合計時間を取得" + detaildata[i].getTotalTime());
         }
 
         //ランキング内の数字を秒で表示
@@ -115,12 +125,12 @@ public class RankingUpdate : MonoBehaviour
                 temp = RankScoreFloat[i];
                 RankScoreFloat[i] = ResultNum;
                 //詳細情報更新
-                detailTemp.setTotalTime(detailData[i].getTotalTime());
-                detailTemp.setItemNum(detailData[i].getItemNum());
-                detailTemp.setOnceTime(detailData[i].getOnceTime());
-                detailData[i].setTotalTime(RTotalTime);
-                detailData[i].setItemNum(RItemNum);
-                detailData[i].setOnceTime(ROnceTime);
+                detailTemp.setTotalTime(detaildata[i].getTotalTime());
+                detailTemp.setItemNum(detaildata[i].getItemNum());
+                detailTemp.setOnceTime(detaildata[i].getOnceTime());
+                detaildata[i].setTotalTime(RTotalTime);
+                detaildata[i].setItemNum(RItemNum);
+                detaildata[i].setOnceTime(ROnceTime);
                 i++;
                 for (; i < 5; i++)
                 {
@@ -129,12 +139,12 @@ public class RankingUpdate : MonoBehaviour
                     RankScoreFloat[i] = temp;
                     temp = temp2;
                     //詳細情報をずらす
-                    detailTemp2.setTotalTime(detailData[i].getTotalTime());
-                    detailTemp2.setItemNum(detailData[i].getItemNum());
-                    detailTemp2.setOnceTime(detailData[i].getOnceTime());
-                    detailData[i].setTotalTime(detailTemp.getTotalTime());
-                    detailData[i].setItemNum(detailTemp.getItemNum());
-                    detailData[i].setOnceTime(detailTemp.getOnceTime());
+                    detailTemp2.setTotalTime(detaildata[i].getTotalTime());
+                    detailTemp2.setItemNum(detaildata[i].getItemNum());
+                    detailTemp2.setOnceTime(detaildata[i].getOnceTime());
+                    detaildata[i].setTotalTime(detailTemp.getTotalTime());
+                    detaildata[i].setItemNum(detailTemp.getItemNum());
+                    detaildata[i].setOnceTime(detailTemp.getOnceTime());
                     detailTemp.setTotalTime(detailTemp2.getTotalTime());
                     detailTemp.setItemNum(detailTemp2.getItemNum());
                     detailTemp.setOnceTime(detailTemp2.getOnceTime());
@@ -155,7 +165,7 @@ public class RankingUpdate : MonoBehaviour
         File.WriteAllText(filePath, ScoreAllText);
         for(int i = 0; i < 5; i++)
         {
-            string DetailAllText = detailData[i].getTotalTime() + "\n" + detailData[i].getItemNum() + "\n" + detailData[i].getOnceTime();
+            string DetailAllText = detaildata[i].getTotalTime() + "\n" + detaildata[i].getItemNum() + "\n" + detaildata[i].getOnceTime();
             File.WriteAllText(detailFilePath + "Detail" + i + ".txt", DetailAllText);
         }
     }

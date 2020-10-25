@@ -85,7 +85,6 @@ public class TestScript : MonoBehaviour
                                 }
                             }
                         }
-
                         //まだ通知してないので、通知するために必要なデータを記録する
                         if (text_once == true)
                         {
@@ -129,8 +128,8 @@ public class TestScript : MonoBehaviour
                 NCMBQuery<NCMBObject> ID = new NCMBQuery<NCMBObject>("UserIDs");
                 //IDの欄からExisting_text(探すIDの値)と一致するオブジェクト検索
                 ID.WhereEqualTo("ID", Existing_text);
-                Debug.Log("ここだけは動け—:" + Existing_text);
-                ID.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+                ID.FindAsync((List<NCMBObject> objList, NCMBException e) =>
+                {
                     if (e != null)
                     {
                         //検索失敗時の処理
@@ -143,87 +142,88 @@ public class TestScript : MonoBehaviour
                         {
                             requestername = name["Name"].ToString();
                             Debug.Log("nameから取得:" + name["Name"].ToString());
+
+                            //取得した依頼主の名前をnotification_textに渡す
+                            notification_text = requestername;
+
+                            //通知用のオブジェクトのテキストに表示する文字の内容を与える
+                            notification_obj.gameObject.transform.GetChild(0).GetComponent<Text>().text = notification_text + "さんから依頼が届きました";
+                            //通知用のオブジェクトを表示させる
+                            Instantiate(notification_obj, new Vector3(540, 80.55005f, 0), Quaternion.identity, this.transform);
+                            Debug.Log("通知オブジェクトを生成した");
                         }
                     }
                 });
-                Debug.Log("取得した名前" + requestername);
+            }
 
-                //取得した依頼主の名前をnotification_textに渡す
-                notification_text = requestername;
-                Debug.Log("テキスト表示では = " + notification_text);
-
-                //通知用のオブジェクトのテキストに表示する文字の内容を与える
-                notification_obj.gameObject.transform.GetChild(0).GetComponent<Text>().text = notification_text + "さんから依頼が届きました";
-                //通知用のオブジェクトを表示させる
-                Instantiate(notification_obj, new Vector3(540, 80.55005f, 0), Quaternion.identity, this.transform);
-                Debug.Log("通知オブジェクトを生成した");
-
-                //Notification_completedクラスの内容を取得
-                NCMBObject obj = new NCMBObject("Notification_completed");
-                //通知用オブジェクトのために使ったオブジェクトIDを全て取得
-                foreach (string id in completed_id)
+            //Notification_completedクラスの内容を取得
+            NCMBObject obj = new NCMBObject("Notification_completed");
+            //通知用オブジェクトのために使ったオブジェクトIDを全て取得
+            foreach (string id in completed_id)
+            { 
+                //すでに通知を記録したものかどうかを調べる
+                //Notification_completedを検索するクラスを作成
+                NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("Notification_completed");
+                //クラスの中のcompleted_idを全て取得する
+                query.WhereNotEqualTo("completed_id", "0");
+                query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
                 {
-                    //すでに通知を記録したものかどうかを調べる
-                    Debug.Log("すでに通知を記録したものかどうかを調べる");
-                    //Notification_completedを検索するクラスを作成
-                    NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("Notification_completed");
-                    //クラスの中のcompleted_idを全て取得する
-                    query.WhereNotEqualTo("completed_id", "0");
-                    query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
-                        if (e != null)
+                    if (e != null)
+                    {
+                        //検索失敗時の処理
+                        Debug.Log("エラー");
+                    }
+                    else
+                    {
+                        //確認用
+                        foreach (NCMBObject quaryobj in objList)
                         {
-                            //検索失敗時の処理
-                            Debug.Log("エラー");
+                            Debug.Log("quaryobj[completed_id]" + quaryobj["completed_id"].ToString());
                         }
-                        else
+
+
+
+                        foreach (NCMBObject quaryobj in objList)
                         {
-                            //確認用
-                            foreach (NCMBObject quaryobj in objList)
+                            //もし、Notification_completedクラスのcompleted_idの中に
+                            //まだ通知用オブジェクトに使ったオブジェクトidが書き込まれていなかったら、書き込みを始める
+                            if (quaryobj["completed_id"].ToString() == id)
                             {
-                                Debug.Log("quaryobj[completed_id]" + quaryobj["completed_id"].ToString());
+                                Debug.Log("書き込みを開始");
+                                writing = false;
                             }
-                            
-
-
-                            foreach (NCMBObject quaryobj in objList)
+                            else
                             {
-                                //もし、Notification_completedクラスのcompleted_idの中に
-                                //まだ通知用オブジェクトに使ったオブジェクトidが書き込まれていなかったら、書き込みを始める
-                                if (quaryobj["completed_id"].ToString() == id)
+                                Debug.Log("違う");
+                            }
+
+                        }
+
+
+                        //通知用オブジェクトに使ったオブジェクトidをcompleted_idに記録する
+                        if (writing == true)
+                        {
+                            obj["completed_id"] = id;
+                            obj.SaveAsync((NCMBException e2) =>
+                            {
+                                if (e2 != null)
                                 {
-                                    Debug.Log("書き込みを開始");
-                                    writing = false;
+                                        //エラー処理
+                                        Debug.Log("失敗");
                                 }
                                 else
                                 {
-                                    Debug.Log("違う");
-                                }
-                            }
-
-                            //通知用オブジェクトに使ったオブジェクトidをcompleted_idに記録する
-                            if (writing == true)
-                            {
-                                obj["completed_id"] = id;
-                                obj.SaveAsync((NCMBException e2) =>
-                                {
-                                    if (e2 != null)
-                                    {
-                                        //エラー処理
-                                        Debug.Log("失敗");
-                                    }
-                                    else
-                                    {
                                         //成功時の処理
                                         Debug.Log("保存した");
-                                    }
-                                });
+                                }
+                            });
 
-                            }
-                            //リセット
-                            writing = true;
                         }
-                    });
-                }
+                        //リセット
+                        writing = true;
+                    }
+                });
+                
                 //二回以上表示されることを防止
                 Display_once = false;
             }

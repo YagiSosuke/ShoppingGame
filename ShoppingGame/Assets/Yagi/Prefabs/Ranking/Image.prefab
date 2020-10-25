@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 6556804217615773906}
   - component: {fileID: 2672658458930475833}
   - component: {fileID: 7763346105061362787}
+  - component: {fileID: 5055532729921689042}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -453,6 +454,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5055532729921689042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292280814939234807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4f633f3552f3d4a9ed9fd652f03043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1312482055458150135
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +583,17 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_MethodName: ButtonPush
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5055532729921689042}
+        m_MethodName: CursorMove
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

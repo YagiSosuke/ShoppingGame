@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Yagi/Scenes/Test.unity
+- path: Assets/Yagi/Scenes/Ranking.unity
   isLoaded: 1
   isActive: 1
