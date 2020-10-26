@@ -84,14 +84,14 @@ public class RankingUpdate : MonoBehaviour
         //ファイルが無かった時にファイルを作成
         if (!File.Exists(filePath))
         {
-            File.AppendAllText(filePath, "99:99\n99:99\n99:99\n99:99\n99:99");
+            File.AppendAllText(filePath, "99:00.00\n99:00.00\n99:00.00\n99:00.00\n99:00.00");
         }
         //詳細データファイルが無かった時に作成
         for (int i = 0; i < 5; i++)
         {
             if (!File.Exists(detailFilePath + "Detail" + i + ".txt"))
             {
-                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:99\n1\n99:99");
+                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00");
             }
         }
 
