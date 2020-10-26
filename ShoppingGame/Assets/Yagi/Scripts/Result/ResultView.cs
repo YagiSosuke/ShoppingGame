@@ -65,7 +65,12 @@ public class ResultView : MonoBehaviour
 
         ResultText = Result.GetComponent<Text>();
         ResultText.color = new Color(0, 0, 0, 0);
-        ResultNum = OnceTimeNum - 10;       //ボーナスを加える処理、後に修正する必要アリ
+        ResultNum = OnceTimeNum;
+        //商品数が10個以上の時ボーナス点を追加する
+        if (GoodsNum >= 10)
+        {
+            ResultNum = ResultNum - 10;       //ボーナスを加える処理
+        }
         Debug.Log("最終時間" + ResultNum);
 
         //ランキングの更新をする
@@ -79,17 +84,19 @@ public class ResultView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(count < 3.0f)
+        if (count < 3.0f)
         {
-            TotalTimeNumCount = Mathf.Lerp(0, TotalTimeNum, count-2f);     //数字が徐々に増えていく
+            //合計時間の表示
+            TotalTimeNumCount = Mathf.Lerp(0, TotalTimeNum, count - 2f);     //数字が徐々に増えていく
 
             //下2桁表示にする
-            TotalTimeText.text = "" + ((int)TotalTimeNumCount / 60) + ":" + (TotalTimeNumCount - ((int)TotalTimeNumCount / 60)).ToString("00.00");
-            TotalTime.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count-2f)* (count-2f)* (count-2f)* (count-2f));
-            TotalTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, (count-2f));
+            TotalTimeText.text = "" + ((int)TotalTimeNumCount / 60) + ":" + (TotalTimeNumCount - (((int)TotalTimeNumCount / 60) * 60)).ToString("00.00");
+            TotalTime.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count - 2f) * (count - 2f) * (count - 2f) * (count - 2f));
+            TotalTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, (count - 2f));
         }
         else if (count < 4.0f)
         {
+            //商品数の表示
             TotalTimeNumCount = Mathf.Lerp(0, TotalTimeNum, 1);     //数字が徐々に増えていく
             //下2桁表示にする
             TotalTimeText.text = "" + ((int)TotalTimeNumCount / 60) + ":" + (TotalTimeNumCount - ((int)TotalTimeNumCount / 60) * 60).ToString("00.00");
@@ -105,6 +112,7 @@ public class ResultView : MonoBehaviour
         }
         else if (count < 5.0f)
         {
+            //一つ当たりの時間の表示
             GoodsNumCount = (int)Mathf.Lerp(0, (float)GoodsNum, 1);     //数字が徐々に増えていく
             GoodsText.text = "" + GoodsNumCount + "点";
             Goods.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, 1);
@@ -112,32 +120,38 @@ public class ResultView : MonoBehaviour
 
 
 
-            OnceTimeNumCount = Mathf.Lerp(0, OnceTimeNum, count-4.0f);     //数字が徐々に増えていく
+            OnceTimeNumCount = Mathf.Lerp(0, OnceTimeNum, count - 4.0f);     //数字が徐々に増えていく
             //下2桁表示にする
             OnceTimeNumCount = OnceTimeNumCount * 100.0f;
             OnceTimeNumCount = (int)OnceTimeNumCount / 100.0f;
-            OnceTimeText.text = "" + Mathf.FloorToInt(OnceTimeNumCount / 60)+":"+(OnceTimeNumCount - (int)OnceTimeNumCount / 60 *60).ToString("00.00");
+            OnceTimeText.text = "" + Mathf.FloorToInt(OnceTimeNumCount / 60) + ":" + (OnceTimeNumCount - (int)OnceTimeNumCount / 60 * 60).ToString("00.00");
 
-            OnceTime.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count-4.0f)* (count - 4.0f)* (count - 4.0f)* (count - 4.0f));
-            OnceTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, count-4.0f);
+            OnceTime.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count - 4.0f) * (count - 4.0f) * (count - 4.0f) * (count - 4.0f));
+            OnceTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, count - 4.0f);
         }
         else if (count < 6.0f)
         {
+            //ボーナスの表示
             OnceTimeNumCount = Mathf.Lerp(0, OnceTimeNum, 1);     //数字が徐々に増えていく
             OnceTimeNumCount = OnceTimeNumCount * 100.0f;
             OnceTimeNumCount = (int)OnceTimeNumCount / 100.0f;
             OnceTimeText.text = "" + Mathf.FloorToInt(OnceTimeNumCount / 60) + ":" + (OnceTimeNumCount - (int)OnceTimeNumCount / 60 * 60).ToString("00.00");
             OnceTimeText.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, 1);
 
-            
-            BonusImage.color = Color.Lerp(new Color(224f / 255f, 240f / 255f, 1, 0), new Color(224f / 255f, 240f / 255f, 1, 1), count - 5.0f);
-            BonusImage.transform.GetChild(0).GetComponent<Text>().color = BonusImage.transform.GetChild(1).GetComponent<Text>().color = Color.Lerp(new Color(0,0,0,0), Color.black, count - 5.0f);
+
+            if (GoodsNum >= 10)
+            {
+                BonusImage.color = Color.Lerp(new Color(224f / 255f, 240f / 255f, 1, 0), new Color(224f / 255f, 240f / 255f, 1, 1), count - 5.0f);
+                BonusImage.transform.GetChild(0).GetComponent<Text>().color = BonusImage.transform.GetChild(1).GetComponent<Text>().color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, count - 5.0f);
+            }
         }
         else if (count < 7.0f)
         {
-            BonusImage.color = Color.Lerp(new Color(224f / 255f, 240f / 255f, 1, 0), new Color(224f / 255f, 240f / 255f, 1, 1), 1);
-            BonusImage.transform.GetChild(0).GetComponent<Text>().color = BonusImage.transform.GetChild(1).GetComponent<Text>().color = Color.black;
-
+            if (GoodsNum >= 10)
+            {
+                BonusImage.color = Color.Lerp(new Color(224f / 255f, 240f / 255f, 1, 0), new Color(224f / 255f, 240f / 255f, 1, 1), 1);
+                BonusImage.transform.GetChild(0).GetComponent<Text>().color = BonusImage.transform.GetChild(1).GetComponent<Text>().color = Color.black;
+            }
 
 
             ResultNumCount = Mathf.Lerp(0, ResultNum, count - 5.0f);     //数字が徐々に増えていく
@@ -145,8 +159,8 @@ public class ResultView : MonoBehaviour
             ResultNumCount = ResultNumCount * 100.0f;
             ResultNumCount = (int)ResultNumCount / 100.0f;
             ResultText.text = "" + Mathf.FloorToInt(ResultNumCount / 60) + ":" + (ResultNumCount - (int)ResultNumCount / 60 * 60).ToString("00.00");
-            
-            Result.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count-6.0f)* (count - 6.0f)* (count - 6.0f)* (count - 6.0f));
+
+            Result.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1), Vector3.one, (count - 6.0f) * (count - 6.0f) * (count - 6.0f) * (count - 6.0f));
             ResultText.color = Color.Lerp(new Color(1, 1, 1, 0), Color.white, count - 6.0f);
         }
         else
