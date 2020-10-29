@@ -35,7 +35,7 @@ public class DetailPreview : MonoBehaviour
             filePath = Application.persistentDataPath + @"\Ranking\Detail";
         #endif
         DetailPreviewF = false;
-        nowPos = afterPos = new Vector3(540, 1800, 0);     //移動後の位置
+        nowPos = afterPos = RankingObject[0].transform.position;     //移動後の位置
         count = 1;
     }
 

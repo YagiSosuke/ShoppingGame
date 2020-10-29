@@ -26,7 +26,16 @@ public class SerchID : MonoBehaviour
             FilePath = Application.dataPath + @"\Family\FamilyData.txt";
         #elif UNITY_STANDALONE  //リリース時
             FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
+        #elif UNITY_ANDROID
+            FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
         #endif
+
+        //家族データファイルがない時に作る
+        if (!File.Exists(FilePath))
+        {
+            File.AppendAllText(FilePath, "");
+        }
+
     }
 
     // Update is called once per frame
@@ -38,6 +47,7 @@ public class SerchID : MonoBehaviour
     //検索するボタンをクリックしたとき
     public void SerchButton()
     {
+
         //UserIDsのクラスを検索
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
         //検索条件を指定
@@ -54,6 +64,7 @@ public class SerchID : MonoBehaviour
                 //アカウントが存在した場合
                 if(count > 0)
                 {
+
                     //登録されている家族のIDを読み込む
                     string[] FileText = File.ReadAllLines(FilePath);
                     //IDが既に登録されているかを見るフラグ
@@ -64,6 +75,7 @@ public class SerchID : MonoBehaviour
                     {
                         Debug.Log("ファイル["+i+"] = "+FileText[i]);
                         if (FileText[i] == FamilyID.text) {
+                            
                             IDRegisterYet = true;
                             break;
                         }
@@ -85,6 +97,7 @@ public class SerchID : MonoBehaviour
                     }
 
                     else {
+
                         //指定されたIDのアカウントを取得
                         GetAccount();
                     }
