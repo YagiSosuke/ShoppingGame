@@ -48,6 +48,10 @@ public class LoadFamilyList : MonoBehaviour
 
         //スクロールエリアのサイズをコンテンツ数に合わせて拡張する
         ScrollRT.sizeDelta = new Vector2(1000, 200 * length);
+
+        //位置を上に合わせる
+        float height = ScrollRT.sizeDelta.y;
+        this.transform.localPosition = new Vector2(0, 0);
     }
 
     // Update is called once per frame
