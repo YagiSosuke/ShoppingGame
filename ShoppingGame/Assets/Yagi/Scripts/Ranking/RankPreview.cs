@@ -23,6 +23,9 @@ public class RankPreview : MonoBehaviour
         #if UNITY_EDITOR        //デバッグ時
             filePath = Application.dataPath + @"\Ranking\TopScore.txt";
             detailFilePath = Application.dataPath + @"\Ranking\";
+        #elif UNITY_STANDALONE
+            filePath = Application.persistentDataPath + @"\Ranking\TopScore.txt";
+            detailFilePath = Application.persistentDataPath + @"\Ranking\";
         #elif UNITY_ANDROID  //リリース時
             filePath = Application.persistentDataPath + @"\Ranking\TopScore.txt";
             detailFilePath = Application.persistentDataPath + @"\Ranking\";

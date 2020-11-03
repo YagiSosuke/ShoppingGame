@@ -31,6 +31,8 @@ public class DetailPreview : MonoBehaviour
     {        
         #if UNITY_EDITOR        //デバッグ時
             filePath = Application.dataPath + @"\Ranking\Detail";
+        #elif UNITY_STANDALONE
+            filePath = Application.persistentDataPath + @"\Ranking\Detail";
         #elif UNITY_ANDROID  //リリース時
             filePath = Application.persistentDataPath + @"\Ranking\Detail";
         #endif
