@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 485416283}
   - component: {fileID: 485416282}
   - component: {fileID: 485416285}
+  - component: {fileID: 485416286}
   m_Layer: 5
   m_Name: OrderButton
   m_TagString: Untagged
@@ -455,8 +456,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 485416285}
-        m_MethodName: TappedButton
+      - m_Target: {fileID: 485416286}
+        m_MethodName: CheckNetworkState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -514,6 +515,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneButton: 2
+--- !u!114 &485416286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485416280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321fa5a53abcdec4899070ec78039886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ErrorPanelPrefab: {fileID: 7560944527376421434, guid: 9b7332a853e202d4dac13478e5abdc60,
+    type: 3}
 --- !u!1 &632381130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,6 +1876,7 @@ GameObject:
   - component: {fileID: 1731751313}
   - component: {fileID: 1731751312}
   - component: {fileID: 1731751315}
+  - component: {fileID: 1731751316}
   m_Layer: 5
   m_Name: IDRegisterButton
   m_TagString: Untagged
@@ -1928,8 +1944,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1731751315}
-        m_MethodName: TappedButton
+      - m_Target: {fileID: 1731751316}
+        m_MethodName: CheckNetworkState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1987,6 +2003,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneButton: 4
+--- !u!114 &1731751316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731751310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321fa5a53abcdec4899070ec78039886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ErrorPanelPrefab: {fileID: 7560944527376421434, guid: 9b7332a853e202d4dac13478e5abdc60,
+    type: 3}
 --- !u!1 &1805440244
 GameObject:
   m_ObjectHideFlags: 0
