@@ -344,6 +344,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Container: {fileID: 1657259402069602070}
   UserName: {fileID: 1657259402251834416}
+  ErrorPanelPrefab: {fileID: 7560944527376421434, guid: 9b7332a853e202d4dac13478e5abdc60,
+    type: 3}
 --- !u!1 &1657259402251834414
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +422,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name
+  m_Text: "\u8AAD\u307F\u8FBC\u307F\u4E2D"
 --- !u!1 &8986761151469770348
 GameObject:
   m_ObjectHideFlags: 0

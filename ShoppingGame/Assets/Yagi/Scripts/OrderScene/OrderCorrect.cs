@@ -25,9 +25,20 @@ public class OrderCorrect : MonoBehaviour
 
     [SerializeField] Dropdown dropdown;         //ドロップダウンメニュー
 
+
+    //ネットワーク接続確認関係
+    //エラー時に表示するプレハブ
+    [SerializeField]
+    GameObject ErrorPanelPrefab;
+    //インスタンス
+    GameObject Instance;
+    //親に設定するオブジェクト
+    GameObject parent;
+
     // Start is called before the first frame update
     void Start()
     {
+        parent = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -39,35 +50,47 @@ public class OrderCorrect : MonoBehaviour
     //送信確認画面を表示するボタン
     public void OKButton()
     {
-        string myString = "";       //ファイル内容をまとめて格納
-
-        //入力された内容をstring型配列にコピー
-        for (int i = 0; i < ListScript.ListLen; i++)
+        //ネットワークの状態を確認する
+        if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            //項目内容が""でなければ
-            if (ListScript.ListContainerEntity[i].transform.GetChild(1).GetComponent<InputField>().text != "")
+            //ネットワークに接続されていない状態
+            Instance = Instantiate(ErrorPanelPrefab);
+            Instance.transform.parent = parent.transform;
+            Instance.transform.localPosition = Vector3.zero;
+            Instance.GetComponent<RectTransform>().offsetMax = Instance.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+        }
+        else {
+            string myString = "";       //ファイル内容をまとめて格納
+
+            //入力された内容をstring型配列にコピー
+            for (int i = 0; i < ListScript.ListLen; i++)
             {
-                myString += (ListScript.ListContainerEntity[i].transform.GetChild(1).GetComponent<InputField>().text + "\n");
+                //項目内容が""でなければ
+                if (ListScript.ListContainerEntity[i].transform.GetChild(1).GetComponent<InputField>().text != "")
+                {
+                    myString += (ListScript.ListContainerEntity[i].transform.GetChild(1).GetComponent<InputField>().text + "\n");
+                }
             }
-        }
 
 
-        //リストの項目があっても、中身が空なら保存できない
-        if (ListScript.ListLen > 0 && myString == "")
-        {
-            ErrorPanel.SetActive(true);
-            ErrorText.text = "依頼する商品を入力してください";
-        }
-        //項目数がある場合のみ送信可能にする
-        else if (ListScript.ListLen > 0) {
-            SendPanel.SetActive(true);
-            SendPanelText.text = "以上の内容を\n" + OrderName + "\nに送信します";
-        }
-        //項目数がない場合、送信できなくする
-        else
-        {
-            ErrorPanel.SetActive(true);
-            ErrorText.text = "リストの項目は\n最低でも1つ入れてください";
+            //リストの項目があっても、中身が空なら保存できない
+            if (ListScript.ListLen > 0 && myString == "")
+            {
+                ErrorPanel.SetActive(true);
+                ErrorText.text = "依頼する商品を入力してください";
+            }
+            //項目数がある場合のみ送信可能にする
+            else if (ListScript.ListLen > 0)
+            {
+                SendPanel.SetActive(true);
+                SendPanelText.text = "以上の内容を\n" + OrderName + "\nに送信します";
+            }
+            //項目数がない場合、送信できなくする
+            else
+            {
+                ErrorPanel.SetActive(true);
+                ErrorText.text = "リストの項目は\n最低でも1つ入れてください";
+            }
         }
     }
 
