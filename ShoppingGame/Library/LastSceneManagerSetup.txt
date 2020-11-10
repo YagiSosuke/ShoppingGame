@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Chiba/Scene_C/Title.unity
+- path: Assets/Yagi/Scenes/IDListScene.unity
   isLoaded: 1
   isActive: 1

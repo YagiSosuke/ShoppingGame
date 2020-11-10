@@ -422,7 +422,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name
+  m_Text: "\u8AAD\u307F\u8FBC\u307F\u4E2D"
 --- !u!1 &8986761151469770348
 GameObject:
   m_ObjectHideFlags: 0
