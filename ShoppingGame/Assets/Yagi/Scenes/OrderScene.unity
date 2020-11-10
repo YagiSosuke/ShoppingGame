@@ -4275,6 +4275,8 @@ MonoBehaviour:
   ErrorText: {fileID: 777896341}
   ListScript: {fileID: 1202908135}
   dropdown: {fileID: 1466388896}
+  ErrorPanelPrefab: {fileID: 7560944527376421434, guid: 9b7332a853e202d4dac13478e5abdc60,
+    type: 3}
 --- !u!114 &1877444139
 MonoBehaviour:
   m_ObjectHideFlags: 0

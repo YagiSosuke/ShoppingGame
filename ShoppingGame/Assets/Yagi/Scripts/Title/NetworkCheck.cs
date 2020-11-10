@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class NetworkCheck : MonoBehaviour
 {
+    //ネットワーク接続確認関係
     //エラー時に表示するプレハブ
     [SerializeField] GameObject ErrorPanelPrefab;
     //インスタンス
