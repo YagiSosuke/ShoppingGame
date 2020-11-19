@@ -1,7 +1,8 @@
 Android
 PlayerPath?
-C:/Users/1823122/Desktop/クイックショッピング/ShoppingGame_Android/ShoppingGame.apk
+C:/Users/1823122/Desktop/クイックショッピング/ShoppingGame_Android/新しいフォルダー/ShoppingGame.apk
 SceneListBegin?
+Assets/Yagi/Scenes/Test.unity
 Assets/Chiba/Scene_C/Title.unity
 Assets/Yagi/Scenes/CreateListScene.unity
 Assets/Yagi/Scenes/IDListScene.unity
@@ -68,8 +69,6 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 d3c76b14a25eebd3a3323dd43297919c Unity.TextMeshPro.dll:TMPro.TMP_InputField
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OpenPanelAnim
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 56a48eaace5d1afe2625633bb61e7ec3 Assembly-CSharp.dll:.InputPhone
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -149,6 +148,7 @@ d59d712041c1ad934122f50281cc8409 Assembly-CSharp.dll:.LoadFamilyList
 ed2546da53d6f69f4f55a78f078d41c6 Assembly-CSharp.dll:.ScrollController
 433a4206240afda8ccdad16e35f88881 Assembly-CSharp.dll:.OrderDropDownMenu
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Temp
 e1323546064ae4c88ab4f9876106f1c3 Assembly-CSharp.dll:.SaveButton
 34c7ca6c9a0a5578df414a58cf546a18 Assembly-CSharp.dll:.AddProduct
 ce477fe6829e4aa1c3da13d2cb6e8548 Assembly-CSharp.dll:.CorrectPanelScript
@@ -210,6 +210,7 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 2b634beec6777629db6741f74547e8e2 Assembly-CSharp.dll:.List_details
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SaveCorrectPanel
+13860269beb5bf645fc388607e3393cf Assembly-CSharp.dll:.Test
 83f2372925920a250903e7f934cc0d8e Assembly-CSharp.dll:.TapEffectScript
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ScrollAreaSet

@@ -30,4 +30,6 @@ public class TestScript : MonoBehaviour
             networkState.text = "ネットワークに接続されている";
         }
     }
+
+
 }
