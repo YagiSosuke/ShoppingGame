@@ -1,8 +1,7 @@
 Android
 PlayerPath?
-C:/Users/1823122/Desktop/クイックショッピング/ShoppingGame_Android/新しいフォルダー/ShoppingGame.apk
+C:/Users/1823122/Desktop/クイックショッピング/ShoppingGame_Android/ShoppingGame.apk
 SceneListBegin?
-Assets/Yagi/Scenes/Test.unity
 Assets/Chiba/Scene_C/Title.unity
 Assets/Yagi/Scenes/CreateListScene.unity
 Assets/Yagi/Scenes/IDListScene.unity
