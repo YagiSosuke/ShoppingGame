@@ -222,3 +222,4 @@ d198ea509a2fb51aac17b1de91a1eb0d Assembly-CSharp.dll:.ProductContainerScript
 2b7c7ab4bda6adb55080b1e3ae45426d Assembly-CSharp.dll:.OrderCorrect
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ButtonCursor
 17e46684f7a27512e1cd61b1e3e45d88 Assembly-CSharp.dll:.Challenge_List
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.pause

@@ -19,7 +19,7 @@ public class Timer_Ctrl : MonoBehaviour
 
 
     //八木追加分
-    long firstTime;     //開始時の時間
+    public static long firstTime;     //開始時の時間
     AndroidJavaObject _javaClass = null;        //バックグラウンドで時間測るプログラム(Javaで記述)
 
 
