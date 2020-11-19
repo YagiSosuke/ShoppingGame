@@ -37,6 +37,14 @@ public class SaveWindowScript : MonoBehaviour
             filePath = Application.persistentDataPath + @"\List\";
             nameFilePath = Application.persistentDataPath + @"\List\_ListName.txt";
         #endif
+        
+        //ファイルが無かった時にファイルを作成
+        if (!File.Exists(filePath))
+        {
+            File.AppendAllText(filePath, "");
+            File.AppendAllText(nameFilePath, "");
+        }
+
     }
 
     // Update is called once per frame
