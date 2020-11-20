@@ -27,6 +27,8 @@ public class OrderDropDownMenu : MonoBehaviour
     {
         #if UNITY_EDITOR        //デバッグ時
             FamilyFilePath = Application.dataPath + @"\Family\FamilyData.txt";
+        #elif UNITY_STANDALONE     //リリース時
+            FamilyFilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
         #elif UNITY_ANDROID     //リリース時
             FamilyFilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
         #endif
