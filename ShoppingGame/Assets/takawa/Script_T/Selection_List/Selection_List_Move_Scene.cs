@@ -10,7 +10,7 @@ using TMPro;
 public class Selection_List_Move_Scene : MonoBehaviour
 {
     [SerializeField] private List_Instanceate list_Instanceate;//list_Instanceateの値を使う
-    GameObject myList_parent;//選択したリスト
+    public GameObject myList_parent;//選択したリスト
     GameObject myList_Child;//myList_parentの子オブジェクト
     Toggle ListToggle;//選択したリストのToggle
     //TextMeshProUGUI Listnametext;//選択したリストに書いてある
@@ -27,16 +27,19 @@ public class Selection_List_Move_Scene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //常にチェックボックスの状態を検索する。変化があったらシーン切り替えを実行
-        NextScene();
+
     }
 
     public void NextScene()//選択したリストのデータを保持したまま次のシーンへ行く
     {
+        /*幾つかコメントしました*/
+        /*トグルを押した瞬間に呼び出しています*/
+        /*Asset/Yagi/Script/SelectionList/ListCheckButtonScript.cs で呼び出し*/
+
         //全てのリストのToggleを探して、trueになっているところのリストの内容をfileNameに格納させる
-        for (int i = 0; i < list_Instanceate.List_num; i++)
-        {
-            myList_parent = GameObject.Find("List" + i + "(Clone)");
+        //for (int i = 0; i < list_Instanceate.List_num; i++)
+        //{
+        //myList_parent = GameObject.Find("List" + i + "(Clone)");
             Debug.Log("取得確認" + myList_parent);
             myList_Child = myList_parent.transform.GetChild(1).gameObject;
             ListToggle = myList_Child.GetComponent<Toggle>();
@@ -51,7 +54,7 @@ public class Selection_List_Move_Scene : MonoBehaviour
                 ListToggle.isOn = false;        //追加 - チェックボックスを外す
                 Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
             }
-        }
+        //}
         if (true_count == 1)//一つだけリストを選んでいたら次のシーンに行ける
         {
             AttentionPanel.SetActive(true);     //開始前パネルを開く
