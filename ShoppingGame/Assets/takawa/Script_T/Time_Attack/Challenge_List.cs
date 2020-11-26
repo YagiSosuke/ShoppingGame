@@ -48,6 +48,27 @@ public class Challenge_List : MonoBehaviour
             Instantiate(List, new Vector3(Containers.transform.position.x, Containers.transform.position.y, Containers.transform.position.z), Quaternion.identity, Containers.transform);//- (myList.Count) * 200
 
         }
+        //依頼されたリストから選んだものを表示する
+        foreach (var s in Selection_List_Move_Scene.request_name)//リストを一つずつ出現させ、テキストから読み取った内容を書き込ませる
+        {
+            Debug.Log("一つのリスト名を表示" + s);
+
+            //Listオブジェクトの名前に番号を付ける
+            List.name = "List" + List_num;
+            List_num++;
+
+            //リストの子にあるテキストを取得する
+            List_Child = List.transform.GetChild(0).gameObject;
+            Listnametext = List_Child.GetComponent<Text>();
+            Debug.Log(List.transform.GetChild(0).gameObject);
+
+            //読み込んだファイルの一行を今作ったリストの名前にする
+            Listnametext.text = s;
+
+            //リストを一つ作る
+            Instantiate(List, new Vector3(Containers.transform.position.x, Containers.transform.position.y, Containers.transform.position.z), Quaternion.identity, Containers.transform);//- (myList.Count) * 200
+
+        }
         Debug.Log("リストの数:"+List_num);
         count = List_num;//平均時間計算用の変数に値をコピーする
     }

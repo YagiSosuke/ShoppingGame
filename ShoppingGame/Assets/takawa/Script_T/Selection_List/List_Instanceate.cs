@@ -20,6 +20,9 @@ public class List_Instanceate : MonoBehaviour
     public static GameObject Container;//コンテンツを入れて置くゲームオブジェクト(staticバージョン)
     [SerializeField] private GameObject List_detail;//作成しておいたリスト
     string myID;//自分のアカウントのID
+    [SerializeField] private GameObject request_List;//依頼リスト
+    public static int request_num;//依頼されたリストの数
+
 
     //テキストファイルの情報を全てリストに表示させ、myListにリストの名前を格納させる
     void Start()
@@ -67,7 +70,7 @@ public class List_Instanceate : MonoBehaviour
         //自分のアカウントのIDを取得
         myID = PlayerPrefs.GetString("IDCreateYet");
         Debug.Log(myID);
-        request_List();
+        request_List_create();
         //①自分向けの依頼が来ていたかどうかを確認する
         //②あったら、foreachで該当するリストを表示する
     }
@@ -108,7 +111,7 @@ public class List_Instanceate : MonoBehaviour
         }
     }
 
-    void request_List()
+    void request_List_create()
     {
         //①サーバーが更新されたかどうかを確認する
         //QueryTestを検索するクラスを作成
@@ -131,6 +134,10 @@ public class List_Instanceate : MonoBehaviour
                 foreach (NCMBObject obj in objList)
                 {
                     Debug.Log("message:" + obj["message"] + "\nSendID:" + obj["SendID"] + "\nCreateDate" + obj.CreateDate);
+                    request_List.name= "依頼リスト" + request_num;
+                    request_List.gameObject.transform.GetChild(0).GetComponent<Text>().text = obj["message"].ToString();
+                    Instantiate(request_List, new Vector3(0, 0, 0), Quaternion.identity, Containers.transform);
+                    request_num++;//依頼されたリストの数を数える
                     //createdate_tmp = obj.CreateDate.ToString();
                     ////削除する文字を1文字ずつ削除する
                     //foreach (char c in del)

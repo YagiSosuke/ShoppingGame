@@ -16,6 +16,7 @@ public class Selection_List_Move_Scene : MonoBehaviour
     //TextMeshProUGUI Listnametext;//選択したリストに書いてある
     public static string fileName;//Toggleで選んだリストのファイル名
     int true_count = 0;//Toggleを一つだけ選んだかどうか
+    public static List<string> request_name = new List<string>();//依頼されたものから選んだものを格納する
 
     [SerializeField] GameObject AttentionPanel;             //ゲーム開始前に表示するパネル
     // Start is called before the first frame update
@@ -52,6 +53,26 @@ public class Selection_List_Move_Scene : MonoBehaviour
                 Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
             }
         }
+        ////依頼されたリストの中から選んだものを選択する
+        //for(int i = 0; i < List_Instanceate.request_num; i++)
+        //{
+        //    myList_parent = GameObject.Find("依頼リスト" + i + "(Clone)");
+        //    Debug.Log("取得確認" + myList_parent);
+        //    myList_Child = myList_parent.transform.GetChild(1).gameObject;
+        //    ListToggle = myList_Child.GetComponent<Toggle>();
+
+        //    if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
+        //    {
+        //        Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+        //        request_name.Add(myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+        //        //true_count++;
+        //        Debug.Log("fileName:" + fileName);
+
+        //        //ListToggle.isOn = false;        //追加 - チェックボックスを外す
+        //        //Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
+        //    }
+        //}
+
         if (true_count == 1)//一つだけリストを選んでいたら次のシーンに行ける
         {
             AttentionPanel.SetActive(true);     //開始前パネルを開く
@@ -66,6 +87,29 @@ public class Selection_List_Move_Scene : MonoBehaviour
             true_count = 0;
         }
 
+    }
+
+    public void Request_Select()
+    {
+        //依頼されたリストの中から選んだものを選択する
+        for (int i = 0; i < List_Instanceate.request_num; i++)
+        {
+            myList_parent = GameObject.Find("依頼リスト" + i + "(Clone)");
+            Debug.Log("取得確認" + myList_parent);
+            myList_Child = myList_parent.transform.GetChild(1).gameObject;
+            ListToggle = myList_Child.GetComponent<Toggle>();
+
+            if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
+            {
+                Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+                request_name.Add(myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+                //true_count++;
+                Debug.Log("fileName:" + fileName);
+
+                //ListToggle.isOn = false;        //追加 - チェックボックスを外す
+                //Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
+            }
+        }
     }
 
     public void BackScene()//値をリセットしてタイトルに戻る
