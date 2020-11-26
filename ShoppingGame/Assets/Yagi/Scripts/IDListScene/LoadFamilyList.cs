@@ -34,7 +34,7 @@ public class LoadFamilyList : MonoBehaviour
         ScrollRT = ScrollArea.GetComponent(typeof(RectTransform)) as RectTransform;
 
         
-            string[] allText = File.ReadAllLines(filePath);         //登録アカウントデータ
+        string[] allText = File.ReadAllLines(filePath);         //登録アカウントデータ
 
         foreach (var text in allText)
         {
@@ -48,6 +48,10 @@ public class LoadFamilyList : MonoBehaviour
 
         //スクロールエリアのサイズをコンテンツ数に合わせて拡張する
         ScrollRT.sizeDelta = new Vector2(1000, 200 * length);
+
+        //位置を上に合わせる
+        float height = ScrollRT.sizeDelta.y;
+        this.transform.localPosition = new Vector2(0, 0);
     }
 
     // Update is called once per frame
@@ -59,30 +63,33 @@ public class LoadFamilyList : MonoBehaviour
     //アカウント情報を新たに生成する関数
     public void InstanceAccount()
     {
-        //UserIDsを検索するクラスを作成
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
-        //IDの値が指定されたものと一致するオブジェクト検索
-        query.WhereEqualTo("ID", AccountID[count]);
-        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
-            if (e != null)
+        //for (int i = 0; i < length; i++)
+        //{
+            //UserIDsを検索するクラスを作成
+            NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
+            //IDの値が指定されたものと一致するオブジェクト検索
+            query.WhereEqualTo("ID", AccountID[count]);
+            query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
             {
-                //検索失敗時の処理
-                Debug.Log("検索失敗です");
-            }
-            else {
-                //IDが指定されたもののオブジェクトを出力
-                foreach (NCMBObject obj in objList)
+                if (e != null)
                 {
-                    AccountInstance[count].transform.GetChild(1).GetComponent<Text>().text = (string)obj["Name"];
-
-                    count++;
-                    if (count < length)
+                    //検索失敗時の処理
+                    Debug.Log("検索失敗です");
+                }
+                else {
+                    //IDが指定されたもののオブジェクトを出力
+                    foreach (NCMBObject obj in objList)
                     {
-                        InstanceAccount();
+                        AccountInstance[count].transform.GetChild(1).GetComponent<Text>().text = (string)obj["Name"];
+                        
+                        count++;
+                        if (count < length)
+                        {
+                            InstanceAccount();
+                        }
                     }
                 }
-            }
-        });
-
+            });
+        //}
     }
 }

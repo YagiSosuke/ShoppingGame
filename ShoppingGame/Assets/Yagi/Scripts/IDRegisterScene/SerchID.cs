@@ -19,6 +19,15 @@ public class SerchID : MonoBehaviour
 
     string FilePath;
 
+    //ネットワーク接続確認関係
+    //エラー時に表示するプレハブ
+    [SerializeField]
+    GameObject ErrorPanelPrefab;
+    //インスタンス
+    GameObject Instance;
+    //親に設定するオブジェクト
+    GameObject parent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +35,18 @@ public class SerchID : MonoBehaviour
             FilePath = Application.dataPath + @"\Family\FamilyData.txt";
         #elif UNITY_STANDALONE  //リリース時
             FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
+        #elif UNITY_ANDROID
+            FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
         #endif
+
+        //家族データファイルがない時に作る
+        if (!File.Exists(FilePath))
+        {
+            File.AppendAllText(FilePath, "");
+        }
+
+        parent = GameObject.Find("Canvas");
+
     }
 
     // Update is called once per frame
@@ -38,67 +58,85 @@ public class SerchID : MonoBehaviour
     //検索するボタンをクリックしたとき
     public void SerchButton()
     {
-        //UserIDsのクラスを検索
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
-        //検索条件を指定
-        query.WhereEqualTo("ID", FamilyID.text);
+        //ネットワークの状態を確認する
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            //ネットワークに接続されていない状態
+            Instance = Instantiate(ErrorPanelPrefab);
+            Instance.transform.parent = parent.transform;
+            Instance.transform.localPosition = Vector3.zero;
+            Instance.GetComponent<RectTransform>().offsetMax = Instance.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+        }
+        else
+        {
+            //ネットワークに接続されている状態
 
-        //入力したIDのアカウントが存在するか調べる
-        query.CountAsync((int count, NCMBException e) => {
-            if (e != null)
+            //UserIDsのクラスを検索
+            NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
+            //検索条件を指定
+            query.WhereEqualTo("ID", FamilyID.text);
+
+            //入力したIDのアカウントが存在するか調べる
+            query.CountAsync((int count, NCMBException e) =>
             {
-                //件数取得失敗時の処理
-            }
-            else {
-                Debug.Log("count : " + count);
-                //アカウントが存在した場合
-                if(count > 0)
+                if (e != null)
                 {
-                    //登録されている家族のIDを読み込む
-                    string[] FileText = File.ReadAllLines(FilePath);
-                    //IDが既に登録されているかを見るフラグ
-                    bool IDRegisterYet = false;
-
-                    //IDがすでに登録されているか検索
-                    for(int i=0;i<FileText.Length; i++)
+                    //件数取得失敗時の処理
+                }
+                else {
+                    Debug.Log("count : " + count);
+                    //アカウントが存在した場合
+                    if (count > 0)
                     {
-                        Debug.Log("ファイル["+i+"] = "+FileText[i]);
-                        if (FileText[i] == FamilyID.text) {
-                            IDRegisterYet = true;
-                            break;
+
+                        //登録されている家族のIDを読み込む
+                        string[] FileText = File.ReadAllLines(FilePath);
+                        //IDが既に登録されているかを見るフラグ
+                        bool IDRegisterYet = false;
+
+                        //IDがすでに登録されているか検索
+                        for (int i = 0; i < FileText.Length; i++)
+                        {
+                            Debug.Log("ファイル[" + i + "] = " + FileText[i]);
+                            if (FileText[i] == FamilyID.text)
+                            {
+
+                                IDRegisterYet = true;
+                                break;
+                            }
+                        }
+
+
+                        //自分のIDが入力されたときの処理
+                        if (FamilyID.text == PlayerPrefs.GetString("IDCreateYet", "null"))
+                        {
+                            UncorrectPanel.SetActive(true);
+                            UncorrectText.text = "自分のIDを\n登録することはできません";
+                        }
+
+                        //IDが既に登録されている場合の処理
+                        else if (IDRegisterYet)
+                        {
+                            UncorrectPanel.SetActive(true);
+                            UncorrectText.text = "入力されたIDは\n既に登録されています";
+                        }
+
+                        else {
+
+                            //指定されたIDのアカウントを取得
+                            GetAccount();
                         }
                     }
-
-
-                    //自分のIDが入力されたときの処理
-                    if (FamilyID.text == PlayerPrefs.GetString("IDCreateYet", "null"))
+                    //アカウントが存在しない場合
+                    else
                     {
+                        //エラーパネルを表示
                         UncorrectPanel.SetActive(true);
-                        UncorrectText.text = "自分のIDを\n登録することはできません";
-                    }
-
-                    //IDが既に登録されている場合の処理
-                    else if (IDRegisterYet)
-                    {
-                        UncorrectPanel.SetActive(true);
-                        UncorrectText.text = "入力されたIDは\n既に登録されています";
-                    }
-
-                    else {
-                        //指定されたIDのアカウントを取得
-                        GetAccount();
+                        UncorrectText.text = "入力されたIDは存在しません\nもう一度お試しください";
                     }
                 }
-                //アカウントが存在しない場合
-                else
-                {
-                    //エラーパネルを表示
-                    UncorrectPanel.SetActive(true);
-                    UncorrectText.text = "入力されたIDは存在しません\nもう一度お試しください";
-                }
-            }
-        });
-
+            });
+        }
     }
 
     //指定されたIDのアカウントを取得してくる関数

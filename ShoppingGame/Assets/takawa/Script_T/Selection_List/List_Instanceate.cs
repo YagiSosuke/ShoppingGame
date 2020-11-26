@@ -86,6 +86,8 @@ public class List_Instanceate : MonoBehaviour
     {
         #if UNITY_EDITOR        //デバッグ時
             FilePath2 = Application.dataPath + @"\List\" + text + ".txt";
+        #elif UNITY_STANDALONE     //リリース時
+            FilePath2 = Application.persistentDataPath + @"\List\" + text + ".txt";
         #elif UNITY_ANDROID     //リリース時
             FilePath2 = Application.persistentDataPath + @"\List\" + text + ".txt";
         #endif

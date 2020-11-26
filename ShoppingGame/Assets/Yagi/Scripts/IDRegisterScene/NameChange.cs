@@ -12,11 +12,37 @@ public class NameChange : MonoBehaviour
     [SerializeField] InputField NameInput;              //新しい名前の入力領域    
     [SerializeField] Text NamePrev;                     //名前のプレビュー
 
+
+    //ネットワーク接続確認関係
+    //エラー時に表示するプレハブ
+    [SerializeField]
+    GameObject ErrorPanelPrefab;
+    //インスタンス
+    GameObject Instance;
+    //親に設定するオブジェクト
+    GameObject parent;
+
+    void Start()
+    {
+        parent = GameObject.Find("Canvas");
+    }
+
     //名前変更ボタンを押したとき
     public void NameChangeButton()
     {
-        //名前変更パネルを表示
-        NameChangePanel.SetActive(true);
+        //ネットワークの状態を確認する
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            //ネットワークに接続されていない状態
+            Instance = Instantiate(ErrorPanelPrefab);
+            Instance.transform.parent = parent.transform;
+            Instance.transform.localPosition = Vector3.zero;
+            Instance.GetComponent<RectTransform>().offsetMax = Instance.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+        }
+        else {
+            //名前変更パネルを表示
+            NameChangePanel.SetActive(true);
+        }
     }
 
     //名前変更確定ボタン

@@ -12,19 +12,7 @@ public class SaveButton : MonoBehaviour
 
     [SerializeField] GameObject SavePanel;      //保存パネル
     [SerializeField] GameObject SaveCorrectPanel;      //保存完了パネル
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     //保存ボタン - 入力領域からの値を受け取る
     public void SaveButtonMethod()
     {
