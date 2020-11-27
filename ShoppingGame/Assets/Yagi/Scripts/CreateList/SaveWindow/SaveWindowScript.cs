@@ -30,10 +30,21 @@ public class SaveWindowScript : MonoBehaviour
         #if UNITY_EDITOR        //デバッグ時
             filePath = Application.dataPath + @"\List\";
             nameFilePath = Application.dataPath + @"\List\_ListName.txt";
+        #elif UNITY_STANDALONE
+            filePath = Application.persistentDataPath + @"\List\";
+            nameFilePath = Application.persistentDataPath + @"\List\_ListName.txt";
         #elif UNITY_ANDROID  //リリース時
             filePath = Application.persistentDataPath + @"\List\";
             nameFilePath = Application.persistentDataPath + @"\List\_ListName.txt";
         #endif
+        
+        //ファイルが無かった時にファイルを作成
+        if (!File.Exists(filePath))
+        {
+            File.AppendAllText(filePath, "");
+            File.AppendAllText(nameFilePath, "");
+        }
+
     }
 
     // Update is called once per frame
@@ -99,11 +110,41 @@ public class SaveWindowScript : MonoBehaviour
             ErrorPanel.SetActive(true);
             ErrorText.text = "依頼する商品を\n入力してください";
         }
+        //リスト名が無いなら保存できない
+        else if (ListNameInput.text == "")
+        {
+            ErrorPanel.SetActive(true);
+            ErrorText.text = "リスト名を入力してください";
+        }
         //リストの項目がある場合は保存できる
         else if (list.ListLen > 0)
         {
-            SavePanel.SetActive(true);
-            SavePanelText.text = "「" + ListNameInput.text + "」\nこのファイル名で保存します";
+            //リスト名が既に保存されてるものと被るなら保存できない
+            string[] AllList = File.ReadAllLines(nameFilePath);
+            bool AlreadyF = false;      //既に準備されてるかを判断するフラグ
+
+            //リストの検索
+            for(int i = 0; i < AllList.Length; i++)
+            {
+                //既にリスト名が被っていたら
+                if(AllList[i] == ListNameInput.text)
+                {
+                    AlreadyF = true;
+                }
+            }
+
+            //リスト名が被っていたなら
+            if (AlreadyF)
+            {
+                ErrorPanel.SetActive(true);
+                ErrorText.text = "そのリスト名は\n既に使用されています\n別のものを入力してください";
+            }
+            //リスト名が被っていないなら
+            else
+            {
+                SavePanel.SetActive(true);
+                SavePanelText.text = "「" + ListNameInput.text + "」\nこのファイル名で保存します";
+            }
         }
         //リストの項目がない場合は保存できない
         else

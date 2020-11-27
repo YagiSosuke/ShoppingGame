@@ -17,10 +17,21 @@ public class Timer_Ctrl : MonoBehaviour
     public static int minute;//分を格納する(結果発表の時に使う)
     public static float millisecond;//ミリ秒を格納する(0.○○と表記されるので、そのまま文字にする時は100倍したりしないといけない)
 
+
+    //八木追加分
+    public static long firstTime;     //開始時の時間
+    AndroidJavaObject _javaClass = null;        //バックグラウンドで時間測るプログラム(Javaで記述)
+
+
     // Start is called before the first frame update
     void Start()//時間の初期化
     {
         time = 0;
+
+
+        //八木追加分
+        _javaClass = new AndroidJavaObject("com.example.mylibrary.NativeCalculaotor");      //Javaを読み込み
+        firstTime = _javaClass.Call<long>("getMillisec");       //開始時間を格納
     }
 
     // Update is called once per frame
@@ -28,7 +39,14 @@ public class Timer_Ctrl : MonoBehaviour
     {
         if (count_up == true)//まだ買い物が続いてるとき
         {
+#if UNITY_STANDALONE
             time += Time.deltaTime;
+#elif UNITY_EDITOR
+            time += Time.deltaTime;
+#elif UNITY_ANDROID
+            time = _javaClass.Call<long>("getMillisec") - firstTime;
+            time = time/1000;
+#endif
             total_time = Mathf.FloorToInt(time);//合計時間（int）を格納
             second = Mathf.FloorToInt(time % 60);//秒を格納
             minute = Mathf.FloorToInt(time / 60);//分を格納

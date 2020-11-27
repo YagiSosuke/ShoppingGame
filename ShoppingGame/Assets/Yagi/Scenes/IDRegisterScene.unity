@@ -1451,6 +1451,8 @@ MonoBehaviour:
   UncorrectText: {fileID: 1793867590}
   FamilyNameText: {fileID: 1416150681}
   FamilyNameText2: {fileID: 1655850581}
+  ErrorPanelPrefab: {fileID: 7560944527376421434, guid: 9b7332a853e202d4dac13478e5abdc60,
+    type: 3}
 --- !u!114 &574590756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,6 +3398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec8b6d9d5ec7f74bb54cb3cdff973a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ErrorPanelPrefab: {fileID: 7560944527376421434, guid: 9b7332a853e202d4dac13478e5abdc60,
+    type: 3}
 --- !u!114 &1348594523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5726,6 +5730,8 @@ MonoBehaviour:
   NameChangePanel: {fileID: 1482436550}
   NameInput: {fileID: 1680541002}
   NamePrev: {fileID: 738166733}
+  ErrorPanelPrefab: {fileID: 7560944527376421434, guid: 9b7332a853e202d4dac13478e5abdc60,
+    type: 3}
 --- !u!1 &2028752905
 GameObject:
   m_ObjectHideFlags: 0
