@@ -10,7 +10,7 @@ using TMPro;
 public class Selection_List_Move_Scene : MonoBehaviour
 {
     [SerializeField] private List_Instanceate list_Instanceate;//list_Instanceateの値を使う
-    GameObject myList_parent;//選択したリスト
+    public GameObject myList_parent;//選択したリスト
     GameObject myList_Child;//myList_parentの子オブジェクト
     Toggle ListToggle;//選択したリストのToggle
     //TextMeshProUGUI Listnametext;//選択したリストに書いてある
@@ -29,16 +29,16 @@ public class Selection_List_Move_Scene : MonoBehaviour
     void Update()
     {
         //常にチェックボックスの状態を検索する。変化があったらシーン切り替えを実行
-        NextScene();
+        //NextScene();
     }
 
     public void NextScene()//選択したリストのデータを保持したまま次のシーンへ行く
     {
         //全てのリストのToggleを探して、trueになっているところのリストの内容をfileNameに格納させる
-        for (int i = 0; i < list_Instanceate.List_num; i++)
-        {
-            myList_parent = GameObject.Find("List" + i + "(Clone)");
-            Debug.Log("取得確認" + myList_parent);
+        //for (int i = 0; i < list_Instanceate.List_num; i++)
+        //{
+            //myList_parent = GameObject.Find("List" + i + "(Clone)");
+            //Debug.Log("取得確認" + myList_parent);
             myList_Child = myList_parent.transform.GetChild(1).gameObject;
             ListToggle = myList_Child.GetComponent<Toggle>();
 
@@ -52,7 +52,7 @@ public class Selection_List_Move_Scene : MonoBehaviour
                 ListToggle.isOn = false;        //追加 - チェックボックスを外す
                 Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
             }
-        }
+        //}
         ////依頼されたリストの中から選んだものを選択する
         //for(int i = 0; i < List_Instanceate.request_num; i++)
         //{
@@ -94,20 +94,24 @@ public class Selection_List_Move_Scene : MonoBehaviour
         //依頼されたリストの中から選んだものを選択する
         for (int i = 0; i < List_Instanceate.request_num; i++)
         {
+            myList_parent = null;
             myList_parent = GameObject.Find("依頼リスト" + i + "(Clone)");
             Debug.Log("取得確認" + myList_parent);
-            myList_Child = myList_parent.transform.GetChild(1).gameObject;
-            ListToggle = myList_Child.GetComponent<Toggle>();
-
-            if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
+            if (myList_parent != null)
             {
-                Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
-                request_name.Add(myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
-                //true_count++;
-                Debug.Log("fileName:" + fileName);
+                myList_Child = myList_parent.transform.GetChild(1).gameObject;
+                ListToggle = myList_Child.GetComponent<Toggle>();
 
-                //ListToggle.isOn = false;        //追加 - チェックボックスを外す
-                //Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
+                if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
+                {
+                    Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+                    request_name.Add(myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+                    //true_count++;
+                    Debug.Log("fileName:" + fileName);
+
+                    //ListToggle.isOn = false;        //追加 - チェックボックスを外す
+                    //Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
+                }
             }
         }
     }
