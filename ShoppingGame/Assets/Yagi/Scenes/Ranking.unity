@@ -911,6 +911,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Image
       objectReference: {fileID: 0}
+    - target: {fileID: 1125784406308692364, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1125784406308692365, guid: 625a359f0cfce3a4da6eb7a7acabd57d,
         type: 3}
       propertyPath: m_LocalPosition.x
