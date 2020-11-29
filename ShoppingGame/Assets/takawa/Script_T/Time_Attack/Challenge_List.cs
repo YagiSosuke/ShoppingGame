@@ -55,6 +55,7 @@ public class Challenge_List : MonoBehaviour
 
             //Listオブジェクトの名前に番号を付ける
             List.name = "List" + List_num;
+            List.tag = "request";
             List_num++;
 
             //リストの子にあるテキストを取得する
