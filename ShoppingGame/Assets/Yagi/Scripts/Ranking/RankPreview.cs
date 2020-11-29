@@ -41,7 +41,7 @@ public class RankPreview : MonoBehaviour
         {
             if (!File.Exists(detailFilePath + "Detail" + i + ".txt"))
             {
-                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00");
+                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00\n9999/99/99");
             }
         }
 

@@ -13,14 +13,16 @@ public class DetailData
     string TotalTime;   //合計時間
     string ItemNum;     //商品数
     string OnceTime;    //商品一つ当たりの時間
+    string NowDate;     //現在の時間
 
     //値設定メソッド
-    public void DataSet(string Data0, string Data1, string Data2)
+    public void DataSet(string Data0, string Data1, string Data2, string Data3)
     {
         Debug.Log("値設定");
         TotalTime = Data0;
         ItemNum = Data1;
         OnceTime = Data2;
+        NowDate = Data3;
     }
 
     public void setTotalTime(string data)
@@ -46,6 +48,14 @@ public class DetailData
     public string getOnceTime()
     {
         return OnceTime;
+    }
+    public void setNowDate(string data)
+    {
+        NowDate = data;
+    }
+    public string getNowDate()
+    {
+        return NowDate;
     }
 }
 
@@ -94,7 +104,7 @@ public class RankingUpdate : MonoBehaviour
         {
             if (!File.Exists(detailFilePath + "Detail" + i + ".txt"))
             {
-                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00");
+                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00\n9999/99/99");
             }
         }
 
@@ -103,7 +113,7 @@ public class RankingUpdate : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             string[] DetailText = File.ReadAllLines(detailFilePath + "Detail" + i + ".txt");
-            detaildata[i].DataSet(DetailText[0], DetailText[1], DetailText[2]);
+            detaildata[i].DataSet(DetailText[0], DetailText[1], DetailText[2], DetailText[3]);
             Debug.Log(i + "の合計時間を取得" + detaildata[i].getTotalTime());
         }
 
@@ -116,6 +126,8 @@ public class RankingUpdate : MonoBehaviour
 
 
         //現在のスコアをランキングに反映
+        DateTime dt = DateTime.Now;
+
         float temp, temp2;
         DetailData detailTemp = new DetailData();
         DetailData detailTemp2 = new DetailData();
@@ -131,9 +143,11 @@ public class RankingUpdate : MonoBehaviour
                 detailTemp.setTotalTime(detaildata[i].getTotalTime());
                 detailTemp.setItemNum(detaildata[i].getItemNum());
                 detailTemp.setOnceTime(detaildata[i].getOnceTime());
+                detailTemp.setNowDate(detaildata[i].getNowDate());
                 detaildata[i].setTotalTime(RTotalTime);
                 detaildata[i].setItemNum(RItemNum);
                 detaildata[i].setOnceTime(ROnceTime);
+                detaildata[i].setNowDate(dt.ToString("d"));
                 i++;
                 for (; i < 5; i++)
                 {
@@ -145,12 +159,15 @@ public class RankingUpdate : MonoBehaviour
                     detailTemp2.setTotalTime(detaildata[i].getTotalTime());
                     detailTemp2.setItemNum(detaildata[i].getItemNum());
                     detailTemp2.setOnceTime(detaildata[i].getOnceTime());
+                    detailTemp2.setNowDate(detaildata[i].getNowDate());
                     detaildata[i].setTotalTime(detailTemp.getTotalTime());
                     detaildata[i].setItemNum(detailTemp.getItemNum());
                     detaildata[i].setOnceTime(detailTemp.getOnceTime());
+                    detaildata[i].setNowDate(detailTemp.getNowDate());
                     detailTemp.setTotalTime(detailTemp2.getTotalTime());
                     detailTemp.setItemNum(detailTemp2.getItemNum());
                     detailTemp.setOnceTime(detailTemp2.getOnceTime());
+                    detailTemp.setNowDate(detailTemp2.getNowDate());
                 }
             }
         }
