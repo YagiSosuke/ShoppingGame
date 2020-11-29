@@ -291,7 +291,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9b8a802c49c2ec242a7453b69431b741, type: 3}
+    m_Font: {fileID: 12800000, guid: 15efc9c6fc5f128419c6c405a0b29195, type: 3}
     m_FontSize: 63
     m_FontStyle: 0
     m_BestFit: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: aiueo
+  m_Text: "\u3042"
 --- !u!1 &8628584539480212084
 GameObject:
   m_ObjectHideFlags: 0

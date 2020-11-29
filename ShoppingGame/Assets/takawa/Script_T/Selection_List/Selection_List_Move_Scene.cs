@@ -35,24 +35,28 @@ public class Selection_List_Move_Scene : MonoBehaviour
     public void NextScene()//選択したリストのデータを保持したまま次のシーンへ行く
     {
         //全てのリストのToggleを探して、trueになっているところのリストの内容をfileNameに格納させる
-        //for (int i = 0; i < list_Instanceate.List_num; i++)
-        //{
-            //myList_parent = GameObject.Find("List" + i + "(Clone)");
-            //Debug.Log("取得確認" + myList_parent);
-            myList_Child = myList_parent.transform.GetChild(1).gameObject;
-            ListToggle = myList_Child.GetComponent<Toggle>();
-
-            if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
+        for (int i = 0; i < list_Instanceate.List_num; i++)
+        {
+            myList_parent = null;
+            myList_parent = GameObject.Find("List" + i + "(Clone)");
+            Debug.Log("取得確認" + myList_parent);
+            if (myList_parent != null)
             {
-                Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
-                fileName = myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text;
-                true_count++;
-                Debug.Log("fileName:" + fileName);
-                
-                ListToggle.isOn = false;        //追加 - チェックボックスを外す
-                Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
+                myList_Child = myList_parent.transform.GetChild(1).gameObject;
+                ListToggle = myList_Child.GetComponent<Toggle>();
+
+                if (ListToggle.isOn == true)//もしtrueになっているものがあったら、そのリストの内容をfileNameに格納させる
+                {
+                    Debug.Log("選んだリスト:" + myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text);
+                    fileName = myList_parent.transform.GetChild(0).gameObject.GetComponent<Text>().text;
+                    true_count++;
+                    Debug.Log("fileName:" + fileName);
+
+                    ListToggle.isOn = false;        //追加 - チェックボックスを外す
+                    Debug.Log("ListToggle.isOn = " + ListToggle.isOn);
+                }
             }
-        //}
+        }
         ////依頼されたリストの中から選んだものを選択する
         //for(int i = 0; i < List_Instanceate.request_num; i++)
         //{
