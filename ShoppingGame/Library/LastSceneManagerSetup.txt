@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Yagi/Scenes/Ranking.unity
-=======
-- path: Assets/Yagi/Scenes/CreateListScene.unity
->>>>>>> c405171e446461516b395bf9393136a4f80d4cba
+- path: Assets/takawa/Scene_T/Result.unity
   isLoaded: 1
   isActive: 1

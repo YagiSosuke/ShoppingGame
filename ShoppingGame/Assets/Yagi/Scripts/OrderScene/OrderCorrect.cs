@@ -161,7 +161,9 @@ public class OrderCorrect : MonoBehaviour
                             OrderClass["message"] = List;       //値を設定
                             OrderClass["SendID"] = PlayerPrefs.GetString("IDCreateYet", "null");       //値を設定
                             OrderClass["OrderDate"] = Sdate;
+                            Debug.Log("SaveNow");
                             OrderClass.SaveAsync();             // データストアへの登録
+                            Debug.Log("SaveCorrect");
                         }
                     }
                     CorrectPanel.SetActive(true);
