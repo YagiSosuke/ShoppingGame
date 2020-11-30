@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 8741166967668332083}
   - component: {fileID: 3848597313678535327}
   - component: {fileID: 8204567755731909266}
+  - component: {fileID: 977562738834345155}
   m_Layer: 5
   m_Name: "\u30EA\u30B9\u30C8\u540D\u524D"
   m_TagString: Untagged
@@ -745,6 +746,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u524A\u9664"
+--- !u!114 &977562738834345155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741166967668332086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de2c978bf8ec3c4e8370ecba145dfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8741166968119089446
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +838,18 @@ MonoBehaviour:
   m_Group: {fileID: 114991992709521022, guid: 52c992ba4b0b3474f98d0a13b2054dde, type: 3}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 977562738834345155}
+        m_MethodName: GetName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &3977585152806415749
 MonoBehaviour:

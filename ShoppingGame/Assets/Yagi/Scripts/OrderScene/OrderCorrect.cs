@@ -113,7 +113,6 @@ public class OrderCorrect : MonoBehaviour
     //依頼を完了するボタン
     public void SendButton()
     {
-        Debug.Log("実行");
         //依頼先を名前 -> IDに変える必要がある
         //Nameが指定されたもののIDを検索する
 
@@ -162,7 +161,9 @@ public class OrderCorrect : MonoBehaviour
                             OrderClass["message"] = List;       //値を設定
                             OrderClass["SendID"] = PlayerPrefs.GetString("IDCreateYet", "null");       //値を設定
                             OrderClass["OrderDate"] = Sdate;
+                            Debug.Log("SaveNow");
                             OrderClass.SaveAsync();             // データストアへの登録
+                            Debug.Log("SaveCorrect");
                         }
                     }
                     CorrectPanel.SetActive(true);

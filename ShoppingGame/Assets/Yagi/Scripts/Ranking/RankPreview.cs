@@ -41,11 +41,21 @@ public class RankPreview : MonoBehaviour
         {
             if (!File.Exists(detailFilePath + "Detail" + i + ".txt"))
             {
-                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00");
+                File.AppendAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00\n9999/99/99\nリスト");
             }
         }
 
         string[] allText = File.ReadAllLines(filePath);
+        
+        //ランキングが旧型式だった場合アップデート
+        string[] detailtext = File.ReadAllLines(detailFilePath + "Detail0.txt");
+        if(detailtext.Length < 5)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                File.WriteAllText(detailFilePath + "Detail" + i + ".txt", "99:00.00\n1\n99:00.00\n9999/99/99\nリスト");
+            }
+        }
 
         for(int i = 0; i < 5; i++)
         {
