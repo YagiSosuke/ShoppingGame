@@ -45,10 +45,10 @@ MonoBehaviour:
     y: 30
     width: 1280
     height: 668
-  m_MinSize: {x: 683, y: 498}
-  m_MaxSize: {x: 14004, y: 14048}
+  m_MinSize: {x: 681, y: 498}
+  m_MaxSize: {x: 14002, y: 14048}
   vertical: 0
-  controlID: 12
+  controlID: 71
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 353
     height: 668
-  m_MinSize: {x: 277, y: 74}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 42
+  controlID: 84
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 43
+  controlID: 53
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -337,19 +337,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Yagi/Scripts/SelectionList
+    - Assets/Yagi/Scripts/CreateList/SaveWindow
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Yagi/Scripts/SelectionList
+  - Assets/Yagi/Scripts/CreateList/SaveWindow
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\1823122\\Desktop\\\u6388\u696D\\\uFF13\u5E74\\\u30B2\u30FC\u30E0\u30AF\u30EA\u30A8\u30A4\u30BF\u7279\u8A13\\\u88FD\u4F5C\u7269\\ShoppingGame\\ShoppingGame"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 461}
-    m_SelectedIDs: 025a0000
-    m_LastClickedID: 23042
+    scrollPos: {x: 0, y: 399}
+    m_SelectedIDs: 18330000
+    m_LastClickedID: 13080
     m_ExpandedIDs: 00000000a027000072410000ae440000224d00000a520000225f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 14f0ffff70f0ffff88f0ffffcaf2ffff12f3ffff28f3ffff6ef3ffffe0f3ffff04f4ffff24f4ffffa0f4ffffa8f4ffffdefbffff
+      m_ExpandedIDs: 82f7ffffdefbffffe66c0000566d0000d26d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -555,9 +555,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1045.1279, y: 1319.5577, z: 5.14963}
+    m_Target: {x: 576.0656, y: 1111.8739, z: 1.2283607}
     speed: 2
-    m_Value: {x: 1045.1279, y: 1319.5577, z: 5.14963}
+    m_Value: {x: 576.0656, y: 1111.8739, z: 1.2283607}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -589,9 +589,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3430.2312
+    m_Target: 2689.623
     speed: 2
-    m_Value: 3430.2312
+    m_Value: 2689.623
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -639,10 +639,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -360
-    m_HBaseRangeMax: 360
-    m_VBaseRangeMin: -720
-    m_VBaseRangeMax: 720
+    m_HBaseRangeMin: -117
+    m_HBaseRangeMax: 117
+    m_VBaseRangeMin: -210.33334
+    m_VBaseRangeMax: 210.33334
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -662,7 +662,7 @@ MonoBehaviour:
       y: 17
       width: 351
       height: 631
-    m_Scale: {x: 0.43819445, y: 0.43819445}
+    m_Scale: {x: 1, y: 1}
     m_Translation: {x: 175.5, y: 315.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -670,12 +670,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -400.5071
-      y: -720
-      width: 801.0142
-      height: 1440
+      x: -175.5
+      y: -315.5
+      width: 351
+      height: 631
     m_MinimalGUI: 1
-  m_defaultScale: 0.43819445
+  m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 526.5, y: 972}
