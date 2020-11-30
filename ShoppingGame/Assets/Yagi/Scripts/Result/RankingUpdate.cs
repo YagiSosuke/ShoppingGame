@@ -171,7 +171,7 @@ public class RankingUpdate : MonoBehaviour
                 detaildata[i].setTotalTime(RTotalTime);
                 detaildata[i].setItemNum(RItemNum);
                 detaildata[i].setOnceTime(ROnceTime);
-                detaildata[i].setNowDate(dt.ToString("d"));
+                detaildata[i].setNowDate(dt.ToString("yyyy/MM/dd"));
                 detaildata[i].setListName(RankingUpdate.listName);
                 i++;
                 for (; i < 5; i++)
