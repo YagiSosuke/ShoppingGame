@@ -157,6 +157,7 @@ public class notification : MonoBehaviour
                             //Debug.Log("通知オブジェクトを生成した");
                             //もし、連続で通知オブジェクトを生成するなら、2秒ごとに生成されるようになる
                             interval_time = 2.0f * loop_count;
+                            Debug.Log("通知を出す");
                             Invoke("notifi_Instance", interval_time);//notifi_Instance関数で通知オブジェクトを生成
                             loop_count++;
                         }
