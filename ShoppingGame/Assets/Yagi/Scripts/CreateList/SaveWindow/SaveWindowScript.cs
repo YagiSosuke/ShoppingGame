@@ -28,10 +28,8 @@ public class SaveWindowScript : MonoBehaviour
     void Start()
     {
         #if UNITY_EDITOR        //デバッグ時
-            Debug.Log("角");
             filePath = Application.dataPath + @"\List\";
             nameFilePath = Application.dataPath + @"\List\_ListName.txt";
-            Debug.Log("角煮");
         #elif UNITY_STANDALONE
             filePath = Application.persistentDataPath + @"\List\";
             nameFilePath = Application.persistentDataPath + @"\List\_ListName.txt";
@@ -40,11 +38,12 @@ public class SaveWindowScript : MonoBehaviour
             nameFilePath = Application.persistentDataPath + @"\List\_ListName.txt";
         #endif
         
-            Debug.Log("角煮た");
         //ファイルが無かった時にファイルを作成
-        if (File.Exists(filePath))
+        if (!File.Exists(nameFilePath))
         {
+            Directory.CreateDirectory(filePath);
             File.AppendAllText(nameFilePath, "");
+            Debug.Log("ファイル作成完了2");
         }
 
     }
