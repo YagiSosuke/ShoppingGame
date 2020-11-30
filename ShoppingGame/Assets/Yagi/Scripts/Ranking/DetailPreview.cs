@@ -17,6 +17,7 @@ public class DetailPreview : MonoBehaviour
     [SerializeField] Text ItemNumText;
     [SerializeField] Text OnceTimeText;
     [SerializeField] Text DateText;
+    [SerializeField] Text ListText;
     
     string filePath;                    //ファイルパス
     bool DetailPreviewF;                //詳細を表示しているかどうかのフラグ
@@ -150,6 +151,7 @@ public class DetailPreview : MonoBehaviour
             ItemNumText.text = DetailText[1];
             OnceTimeText.text = DetailText[2];
             DateText.text = DetailText[3];
+            ListText.text = DetailText[4];
 
         }
     }

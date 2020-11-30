@@ -113,7 +113,6 @@ public class OrderCorrect : MonoBehaviour
     //依頼を完了するボタン
     public void SendButton()
     {
-        Debug.Log("実行");
         //依頼先を名前 -> IDに変える必要がある
         //Nameが指定されたもののIDを検索する
 

@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/takawa/Scene_T/Result.unity
-=======
-- path: Assets/Yagi/Scenes/OrderScene.unity
->>>>>>> dd8336e4c8692f0e5c759a0d145863a3bfb86ce2
+- path: Assets/Chiba/Scene_C/Title.unity
   isLoaded: 1
   isActive: 1
