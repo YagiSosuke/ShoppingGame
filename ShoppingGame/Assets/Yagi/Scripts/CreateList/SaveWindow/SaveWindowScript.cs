@@ -47,13 +47,7 @@ public class SaveWindowScript : MonoBehaviour
         }
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     //保存する
     public void SaveButton()
     {
@@ -134,11 +128,28 @@ public class SaveWindowScript : MonoBehaviour
                 }
             }
 
+            Debug.Log("ListNameInput.text.IndexOf(\"a\") = " + ListNameInput.text.IndexOf('a'));
+
             //リスト名が被っていたなら
             if (AlreadyF)
             {
                 ErrorPanel.SetActive(true);
                 ErrorText.text = "そのリスト名は\n既に使用されています\n別のものを入力してください";
+            }
+            //ファイル名に使用できない文字が入っていたら
+            else if (ListNameInput.text.IndexOf("\\") >= 0 ||
+                     ListNameInput.text.IndexOf("/") >= 0 ||
+                     ListNameInput.text.IndexOf(":") >= 0 ||
+                     ListNameInput.text.IndexOf("*") >= 0 ||
+                     ListNameInput.text.IndexOf("?") >= 0 ||
+                     ListNameInput.text.IndexOf("\"") >= 0 ||
+                     ListNameInput.text.IndexOf("<") >= 0 ||
+                     ListNameInput.text.IndexOf(">") >= 0 ||
+                     ListNameInput.text.IndexOf("|") >= 0 ||
+                     ListNameInput.text.IndexOf(".") >= 0)
+            {
+                ErrorPanel.SetActive(true);
+                ErrorText.text = "リスト名に\n\\ / : + ? \" < > | .\nは使用できません\n他のものを入力してください";
             }
             //リスト名が被っていないなら
             else
