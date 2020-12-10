@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 31
+  controlID: 120
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,7 +151,7 @@ MonoBehaviour:
     y: 0
     width: 1280
     height: 718
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 90
+  controlID: 15
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 91
+  controlID: 102
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -402,20 +402,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/takawa
+    - Assets/Chiba/Scene_C
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/takawa
+  - Assets/Chiba/Scene_C
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\1823122\\Desktop\\\u6388\u696D\\\uFF13\u5E74\\\u30B2\u30FC\u30E0\u30AF\u30EA\u30A8\u30A4\u30BF\u7279\u8A13\\\u88FD\u4F5C\u7269\\ShoppingGame\\ShoppingGame"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 158}
-    m_SelectedIDs: ec8c0000
-    m_LastClickedID: 36076
-    m_ExpandedIDs: 0000000058730000ec8c0000189000007c980000569d00002aaa000052aa000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 64440000
+    m_LastClickedID: 17508
+    m_ExpandedIDs: 00000000ba2700008c410000c84400003c4d000024520000145f00003c5f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -443,7 +443,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000058730000ec8c0000189000007c980000569d00002aaa000052aa0000
+    m_ExpandedIDs: 00000000ba2700008c410000c84400003c4d000024520000145f00003c5f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -562,9 +562,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c2940000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ea02ffff2a14ffff8614ffff9e14ffffb215ffffee15ffff0816ffff3c16ffffa416ffffb816ffffcc16ffff2817ffff3017ffff5017ffff7218ffffba18ffff0819fffff819ffff541affff6c1affff8e1cffffd61cfffffe1cffff3e1dffff461dffff6a1dffff861dffffec1dfffffa1dffffd81efffffe1fffff9820ffff18c900007ec9000060ea0000a2ea0000
+      m_ExpandedIDs: aef1ffff0af2ffff22f2ffff36f3ffff72f3ffff8cf3ffffc0f3ffff28f4ffff3cf4ffff50f4ffffacf4ffffb4f4ffffdcf4ffff80f5ffffc4f5ffff2cf6ffff88f6ffffa0f6ffffe4f8ffff2cf9ffff56f9ffff9af9ffff0cfaffff30faffff50faffffccfaffffd4faffff22fbffffd4fbffffb8790000c27a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -704,10 +704,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -360
-    m_HBaseRangeMax: 360
-    m_VBaseRangeMin: -720
-    m_VBaseRangeMax: 720
+    m_HBaseRangeMin: -540
+    m_HBaseRangeMax: 540
+    m_VBaseRangeMin: -1080
+    m_VBaseRangeMax: 1080
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -727,7 +727,7 @@ MonoBehaviour:
       y: 17
       width: 366
       height: 631
-    m_Scale: {x: 0.43819445, y: 0.43819445}
+    m_Scale: {x: 0.29212964, y: 0.29212964}
     m_Translation: {x: 183, y: 315.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -735,15 +735,15 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -417.6228
-      y: -720
-      width: 835.2456
-      height: 1440
+      x: -626.4342
+      y: -1080
+      width: 1252.8684
+      height: 2160
     m_MinimalGUI: 1
-  m_defaultScale: 0.43819445
+  m_defaultScale: 0.29212964
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 549, y: 972}
+  m_LastWindowPixelSize: {x: 366, y: 648}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100

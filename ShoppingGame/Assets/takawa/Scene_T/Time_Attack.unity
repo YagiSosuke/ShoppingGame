@@ -678,7 +678,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 320465287}
   m_HandleRect: {fileID: 320465285}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3215,7 +3215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000009675947}
+  m_AnchoredPosition: {x: 0, y: 0.00003285947}
   m_SizeDelta: {x: -956, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1806565294
@@ -3369,6 +3369,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u901A\u77E5Image"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776526438268926782, guid: 95262950414f0fa4da7f5176b979fbfa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6776526438268926785, guid: 95262950414f0fa4da7f5176b979fbfa,
         type: 3}
