@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":736.1337890625,"y":1313.13134765625,"z":28.749601364135743},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":1664.088134765625,"orthographic":true}
-=======
-﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":844.6790771484375,"y":39.044044494628909,"z":5.2521514892578129},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":401.8880615234375,"orthographic":true}
->>>>>>> chiba
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":508.7597961425781,"y":1280.947265625,"z":26.833919525146486},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":2603.8701171875,"orthographic":true}
