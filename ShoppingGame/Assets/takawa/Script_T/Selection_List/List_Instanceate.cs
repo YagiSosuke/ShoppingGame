@@ -31,6 +31,8 @@ public class List_Instanceate : MonoBehaviour
             FilePath = Application.dataPath + @"\List\_ListName.txt";
         #elif UNITY_ANDROID     //リリース時
             FilePath = Application.persistentDataPath + @"\List\_ListName.txt";
+        #elif UNITY_STANDALONE     //リリース時
+            FilePath = Application.persistentDataPath + @"\List\_ListName.txt";
         #endif
 
         //DirectoryInfo dir = new DirectoryInfo(FilePath);//指定したフォルダーの中身を全て読み込む

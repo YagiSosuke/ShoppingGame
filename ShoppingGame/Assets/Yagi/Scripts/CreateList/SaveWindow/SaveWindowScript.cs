@@ -68,8 +68,15 @@ public class SaveWindowScript : MonoBehaviour
             }
         }
 
+
+        //ファイルが存在しない場合、ファイルを作成
+        if (!File.Exists(filePath + fileName + ".txt"))
+        {
+            File.Create(filePath + fileName + ".txt");
+        }
+
         //textファイルにリスト内容を渡す
-            File.AppendAllText(filePath+fileName+".txt", myString);
+        File.AppendAllText(filePath+fileName+".txt", myString);
         //ファイル名を保存
             File.AppendAllText(nameFilePath, fileName+"\n");
 

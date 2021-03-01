@@ -33,16 +33,17 @@ public class SerchID : MonoBehaviour
     {
         #if UNITY_EDITOR        //デバッグ時
             FilePath = Application.dataPath + @"\Family\FamilyData.txt";
-        #elif UNITY_STANDALONE  //リリース時
+#elif UNITY_STANDALONE  //リリース時
             FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
-        #elif UNITY_ANDROID
+#elif UNITY_ANDROID
             FilePath = Application.persistentDataPath + @"\Family\FamilyData.txt";
-        #endif
-
+#endif
+        
         //家族データファイルがない時に作る
         if (!File.Exists(FilePath))
         {
-            File.AppendAllText(FilePath, "");
+            File.Create(FilePath);
+            File.WriteAllText(FilePath, "");
         }
 
         parent = GameObject.Find("Canvas");
@@ -70,7 +71,6 @@ public class SerchID : MonoBehaviour
         else
         {
             //ネットワークに接続されている状態
-
             //UserIDsのクラスを検索
             NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("UserIDs");
             //検索条件を指定
@@ -100,7 +100,6 @@ public class SerchID : MonoBehaviour
                             Debug.Log("ファイル[" + i + "] = " + FileText[i]);
                             if (FileText[i] == FamilyID.text)
                             {
-
                                 IDRegisterYet = true;
                                 break;
                             }
@@ -122,7 +121,6 @@ public class SerchID : MonoBehaviour
                         }
 
                         else {
-
                             //指定されたIDのアカウントを取得
                             GetAccount();
                         }
